@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Nancy.Owin;
 
-namespace Facade.Scaffold.Instance
+namespace Facade.Template.Instance
 {
     public class Startup
     {

@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Facade.Scaffold.Instance
+namespace Facade.Template.Instance
 {
     public static class Program
     {

@@ -1,7 +1,7 @@
-using Facade.Scaffold.Instance.Gateways;
+using Facade.Template.Instance.Gateways;
 using System.Collections.Generic;
 
-namespace Facade.Scaffold.Data.Gateways
+namespace Facade.Template.Data.Gateways
 {
     public class PlaceholderGateway : IPlaceholderGateway
     {

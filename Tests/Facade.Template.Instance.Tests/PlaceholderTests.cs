@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace Facade.Scaffold.ComponentTests
+namespace Facade.Template.Instance.Tests
 {
     public class PlaceholderTests
     {

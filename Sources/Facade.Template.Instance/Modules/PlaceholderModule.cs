@@ -1,6 +1,6 @@
 using Nancy;
 
-namespace Facade.Scaffold.Instance.Modules
+namespace Facade.Template.Instance.Modules
 {
     public sealed class PlaceholderModule : NancyModule
     {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Facade.Scaffold.Instance.Gateways
+namespace Facade.Template.Instance.Gateways
 {
     public interface IPlaceholderGateway
     {
