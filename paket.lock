@@ -667,3 +667,31 @@ NUGET
       System.Threading (>= 4.3)
       System.Xml.ReaderWriter (>= 4.3)
       System.Xml.XmlDocument (>= 4.3)
+
+GROUP addins
+RESTRICTION: == netcoreapp2.2
+NUGET
+  remote: https://www.nuget.org/api/v2
+    Cake.Paket (4.0)
+
+GROUP modules
+RESTRICTION: == netcoreapp2.2
+NUGET
+  remote: https://www.nuget.org/api/v2
+    Cake.Paket.Module (4.0)
+
+GROUP testing
+RESTRICTION: == netcoreapp2.2
+NUGET
+  remote: https://www.nuget.org/api/v2
+    Microsoft.NETCore.Platforms (2.2.2)
+    NETStandard.Library (2.0.3)
+      Microsoft.NETCore.Platforms (>= 1.1)
+    NUnit (3.12)
+      NETStandard.Library (>= 2.0)
+
+GROUP tools
+RESTRICTION: == netcoreapp2.2
+NUGET
+  remote: https://www.nuget.org/api/v2
+    Cake (0.34.1)

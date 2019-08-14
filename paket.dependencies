@@ -1,13 +1,32 @@
-strategy : max
-framework : netcore22
+group main
+    source https://www.nuget.org/api/v2
+    strategy : max
+    framework : netcore22
+    nuget EasyNetQ
+    nuget Autofac
+    nuget Microsoft.Extensions.Configuration
+    nuget Microsoft.Extensions.Configuration.Json
+    nuget Nancy
+    nuget Microsoft.AspNetCore.Server.Kestrel
+    nuget Microsoft.AspNetCore.Owin
+    nuget Nancy.Bootstrappers.Autofac
 
-source https://www.nuget.org/api/v2
+group testing
+    framework: : netcore22
+    source https://nuget.org/api/v2
+    nuget NUnit
 
-nuget EasyNetQ
-nuget Autofac
-nuget Microsoft.Extensions.Configuration
-nuget Microsoft.Extensions.Configuration.Json
-nuget Nancy
-nuget Microsoft.AspNetCore.Server.Kestrel
-nuget Microsoft.AspNetCore.Owin
-nuget Nancy.Bootstrappers.Autofac
+group tools
+    framework: : netcore22
+    source https://nuget.org/api/v2
+    nuget Cake
+
+group addins
+    framework: : netcore22
+    source https://nuget.org/api/v2
+    nuget Cake.Paket
+
+group modules
+    framework: : netcore22
+    source https://nuget.org/api/v2
+    nuget Cake.Paket.Module

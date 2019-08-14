@@ -1,0 +1,9 @@
+type file
+id Facade.Template
+title Facade.Template
+authors baal
+owners baal
+description Minimal facade template using NancyFX
+requireLicenseAcceptance false
+files
+	bin/Release/ ==> lib/
