@@ -1,0 +1,74 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facade.Scaffold.Instance", "Sources\Facade.Scaffold.Instance\Facade.Scaffold.Instance.csproj", "{87AF7717-995D-43EA-A0F5-8302678D8BD9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sources", "Sources", "{E4B1F4BA-255E-4460-A7D2-E2E6CD8A8F6D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facade.Scaffold.ComponentTests", "Tests\Facade.Scaffold.ComponentTests\Facade.Scaffold.ComponentTests.csproj", "{EA1C1EB4-331A-4F6F-91C7-D5B0518DD1EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9BE853EF-A484-42C2-908E-6895824D61EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facade.Scaffold.Data", "Sources\Facade.Scaffold.Data\Facade.Scaffold.Data.csproj", "{E4BB3EF3-903E-4A20-961D-2C68E5F92DF4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6170BC1C-5A60-4FB0-B61E-7944E69DBB9F}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		paket.dependencies = paket.dependencies
+		paket.lock = paket.lock
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facade.Scaffold.Data.Tests", "Tests\Facade.Scaffold.Data.Tests\Facade.Scaffold.Data.Tests.csproj", "{CC031841-FC38-42F8-82C9-A03F1CB34D71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facade.Scaffold.Instance.Tests", "Tests\Facade.Scaffold.Instance.Tests\Facade.Scaffold.Instance.Tests.csproj", "{1DCEFFC3-0FC5-4D05-8EAC-5F2FCAA7E9D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{36FA5793-1ADB-404E-81E3-C9AE58BA28ED}"
+	ProjectSection(SolutionItems) = preProject
+		.paket\paket.exe = .paket\paket.exe
+		.paket\Paket.Restore.targets = .paket\Paket.Restore.targets
+		.paket\paket.targets = .paket\paket.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87AF7717-995D-43EA-A0F5-8302678D8BD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87AF7717-995D-43EA-A0F5-8302678D8BD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87AF7717-995D-43EA-A0F5-8302678D8BD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87AF7717-995D-43EA-A0F5-8302678D8BD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA1C1EB4-331A-4F6F-91C7-D5B0518DD1EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA1C1EB4-331A-4F6F-91C7-D5B0518DD1EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA1C1EB4-331A-4F6F-91C7-D5B0518DD1EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA1C1EB4-331A-4F6F-91C7-D5B0518DD1EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4BB3EF3-903E-4A20-961D-2C68E5F92DF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4BB3EF3-903E-4A20-961D-2C68E5F92DF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4BB3EF3-903E-4A20-961D-2C68E5F92DF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4BB3EF3-903E-4A20-961D-2C68E5F92DF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC031841-FC38-42F8-82C9-A03F1CB34D71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC031841-FC38-42F8-82C9-A03F1CB34D71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC031841-FC38-42F8-82C9-A03F1CB34D71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC031841-FC38-42F8-82C9-A03F1CB34D71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DCEFFC3-0FC5-4D05-8EAC-5F2FCAA7E9D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DCEFFC3-0FC5-4D05-8EAC-5F2FCAA7E9D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DCEFFC3-0FC5-4D05-8EAC-5F2FCAA7E9D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DCEFFC3-0FC5-4D05-8EAC-5F2FCAA7E9D6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{87AF7717-995D-43EA-A0F5-8302678D8BD9} = {E4B1F4BA-255E-4460-A7D2-E2E6CD8A8F6D}
+		{EA1C1EB4-331A-4F6F-91C7-D5B0518DD1EC} = {9BE853EF-A484-42C2-908E-6895824D61EB}
+		{E4BB3EF3-903E-4A20-961D-2C68E5F92DF4} = {E4B1F4BA-255E-4460-A7D2-E2E6CD8A8F6D}
+		{CC031841-FC38-42F8-82C9-A03F1CB34D71} = {9BE853EF-A484-42C2-908E-6895824D61EB}
+		{1DCEFFC3-0FC5-4D05-8EAC-5F2FCAA7E9D6} = {9BE853EF-A484-42C2-908E-6895824D61EB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0F3F9CA1-632C-4898-B7F3-DA75AB5F4609}
+	EndGlobalSection
+EndGlobal

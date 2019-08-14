@@ -1,0 +1,12 @@
+strategy : max
+framework : netcore22
+
+source https://www.nuget.org/api/v2
+
+nuget EasyNetQ
+nuget Autofac
+nuget Microsoft.Extensions.Configuration
+nuget Microsoft.Extensions.Configuration.Json
+nuget Nancy
+nuget Microsoft.AspNetCore.Server.Kestrel
+nuget Microsoft.AspNetCore.Owin
