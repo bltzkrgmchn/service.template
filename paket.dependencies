@@ -25,6 +25,7 @@ group addins
     framework: : netcore22
     source https://nuget.org/api/v2
     nuget Cake.Paket
+    nuget Cake.Docker
 
 group modules
     framework: : netcore22

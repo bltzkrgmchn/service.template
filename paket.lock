@@ -672,6 +672,7 @@ GROUP addins
 RESTRICTION: == netcoreapp2.2
 NUGET
   remote: https://www.nuget.org/api/v2
+    Cake.Docker (0.10.1)
     Cake.Paket (4.0)
 
 GROUP modules
