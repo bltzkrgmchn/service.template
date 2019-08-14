@@ -10,3 +10,4 @@ nuget Microsoft.Extensions.Configuration.Json
 nuget Nancy
 nuget Microsoft.AspNetCore.Server.Kestrel
 nuget Microsoft.AspNetCore.Owin
+nuget Nancy.Bootstrappers.Autofac

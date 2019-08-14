@@ -1,7 +1,6 @@
-using Facade.Template.Instance.Gateways;
 using System.Collections.Generic;
 
-namespace Facade.Template.Data.Gateways
+namespace Facade.Template.Instance.Gateways
 {
     public class PlaceholderGateway : IPlaceholderGateway
     {
