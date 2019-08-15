@@ -1,0 +1,4 @@
+group testing
+    NUnit
+    FakeItEasy
+    FluentAssertions

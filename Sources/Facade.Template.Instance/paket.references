@@ -1,5 +1,7 @@
-Microsoft.Extensions.Configuration
-Microsoft.Extensions.Configuration.Json
-Nancy
-Microsoft.AspNetCore.Owin
-Microsoft.AspNetCore.Server.Kestrel
+group main
+    EasyNetQ
+    Nancy
+    Microsoft.Extensions.Configuration
+    Microsoft.Extensions.Configuration.Json
+    Microsoft.AspNetCore.Owin
+    Microsoft.AspNetCore.Server.Kestrel

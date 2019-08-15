@@ -50,15 +50,8 @@ Task("Package").IsDependentOn("Build").Does(() =>
     PaketPack(packages, new PaketPackSettings { Version = "1.0.0" });
 });
 
-Task("Containerize").IsDependentOn("Build").Does(() =>
-    EnsureDirectoryExists(containers);
-    var settings = new DockerImageBuildSettings { Tag = new[] {"dockerapp:latest" }};
-    DockerBuild(settings, containers);
-});
-
 Task("Default")
     .IsDependentOn("Tests")
-    .IsDependentOn("Package")
-    .IsDependentOn("Containerize");
+    .IsDependentOn("Package");
 
 RunTarget(target);
