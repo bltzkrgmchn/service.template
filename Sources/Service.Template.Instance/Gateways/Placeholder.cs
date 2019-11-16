@@ -1,4 +1,4 @@
-namespace Facade.Template.Instance.Gateways
+namespace Service.Template.Instance.Gateways
 {
     public class Placeholder
     {

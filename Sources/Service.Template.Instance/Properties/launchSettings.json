@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Facade.Template.Instance": {
+    "Service.Template.Instance": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "/",

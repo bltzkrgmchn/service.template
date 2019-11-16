@@ -1,7 +1,7 @@
 using Nancy;
-using Facade.Template.Instance.Gateways;
+using Service.Template.Instance.Gateways;
 
-namespace Facade.Template.Instance.Modules
+namespace Service.Template.Instance.Modules
 {
     public sealed class PlaceholderModule : NancyModule
     {

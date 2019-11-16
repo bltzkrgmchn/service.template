@@ -1,9 +1,9 @@
 type file
-id Facade.Template
-title Facade.Template
+id Service.Template
+title Service.Template
 authors baal
 owners baal
-description Minimal facade template using NancyFX
+description Minimal Service template using NancyFX
 requireLicenseAcceptance false
 files
 	bin/Release/ ==> lib/

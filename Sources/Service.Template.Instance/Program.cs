@@ -1,7 +1,9 @@
-﻿using System.IO;
+﻿using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Facade.Template.Instance
+namespace Service.Template.Instance
 {
     public static class Program
     {

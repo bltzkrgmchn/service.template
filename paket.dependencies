@@ -3,23 +3,28 @@ strategy : max
 framework : netcore22
 
 group main
+source https://www.nuget.org/api/v2
     nuget EasyNetQ
     nuget Nancy
     nuget Microsoft.Extensions.Configuration
     nuget Microsoft.Extensions.Configuration.Json
     nuget Microsoft.AspNetCore.Server.Kestrel
-    nuget Microsoft.AspNetCore.Owin
+    nuget Microsoft.AspNetCore.Owin 2.2
 
 group testing
+source https://www.nuget.org/api/v2
     nuget NUnit
     nuget FakeItEasy
     nuget FluentAssertions
 
 group tools
+source https://www.nuget.org/api/v2
     nuget Cake
 
 group addins
+source https://www.nuget.org/api/v2
     nuget Cake.Paket
 
 group modules
+source https://www.nuget.org/api/v2
     nuget Cake.Paket.Module

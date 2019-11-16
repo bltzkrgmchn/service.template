@@ -1,21 +1,19 @@
 #tool paket:?package=NUnit.ConsoleRunner&group=main
 #addin paket:?package=Cake.Paket
-#addin paket:?package=Cake.Docker
 
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 
-var solution = "Facade.Template.sln";
+var solution = "Service.Template.sln";
 
-var binaries = "./Sources/Facade.Template.Instance/bin";
-var objects = "./Sources/Facade.Template.Instance/obj";
+var binaries = "./Sources/Service.Template.Instance/bin";
+var objects = "./Sources/Service.Template.Instance/obj";
 var packages = "./artefacts/packages";
-var containers = "./artefacts/containers";
 
 Task("Clean")
     .Does(() =>
 {
-    CleanDirectories(new[] {packages, binaries, containers, objects});
+    CleanDirectories(new[] {packages, binaries, objects});
 });
 
 Task("Restore")

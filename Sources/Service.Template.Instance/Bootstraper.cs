@@ -1,8 +1,8 @@
 ﻿using Nancy;
 using Nancy.TinyIoc;
-using Facade.Template.Instance.Gateways;
+using Service.Template.Instance.Gateways;
 
-namespace Facade.Template.Instance
+namespace Service.Template.Instance
 {
     public class Bootstraper : DefaultNancyBootstrapper
     {
