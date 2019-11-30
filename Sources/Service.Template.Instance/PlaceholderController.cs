@@ -25,8 +25,9 @@ namespace Service.Template.Instance
             try
             {
                 RequestHandle<GetAllPlaceholdersCommand> request = this.getAllPlaceholdersClient.Create(new GetAllPlaceholdersCommand());
-                GetAllPlaceholderResponse response = (await request.GetResponse<GetAllPlaceholderResponse>()).Message;
-                return this.Ok(response);
+                Response<GetAllPlaceholderResponse> response = await request.GetResponse<GetAllPlaceholderResponse>();
+                var placeholdes = response.Message.Placeholders;
+                return this.Ok(response.Message.Placeholders);
             }
             catch (RequestTimeoutException)
             {
@@ -45,8 +46,8 @@ namespace Service.Template.Instance
             try
             {
                 RequestHandle<GetSinglePlaceholderCommand> request = this.getSinglePlaceholderClient.Create(new GetSinglePlaceholderCommand { Name = placeholderName });
-                GetSinglePlaceholderResponse response = (await request.GetResponse<GetSinglePlaceholderResponse>()).Message;
-                return this.Ok(response);
+                var response = await request.GetResponse<GetSinglePlaceholderResponse>();
+                return this.Ok(response.Message.Placeholder);
             }
             catch (RequestTimeoutException)
             {

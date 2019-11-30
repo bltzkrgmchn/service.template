@@ -1,21 +1,25 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Service.Template.Instance
 {
-    public static class Program
+    public class Program
     {
         public static void Main(string[] args)
         {
             BuildWebHost(args).Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args)
-        {
-            return WebHost.CreateDefaultBuilder(args)
+        public static IWebHost BuildWebHost(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseKestrel()
+                .ConfigureLogging(logging =>
+                {
+                    logging.ClearProviders();
+                    logging.AddConsole();
+                    logging.AddFilter("MassTransit", LogLevel.Debug);
+                })
                 .Build();
-        }
     }
 }

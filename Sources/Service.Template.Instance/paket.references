@@ -1,9 +1,5 @@
 group main
-    EasyNetQ
-    Nancy
     MassTransit
     MassTransit.Extensions.DependencyInjection
     Microsoft.Extensions.Configuration
     Microsoft.Extensions.Configuration.Json
-    Microsoft.AspNetCore.Owin
-    Microsoft.AspNetCore.Server.Kestrel

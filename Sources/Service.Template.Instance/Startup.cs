@@ -33,16 +33,16 @@ namespace Service.Template.Instance
 
             services.AddSingleton(serviceProvider => Bus.Factory.CreateUsingInMemory(configure =>
             {
-                configure.ReceiveEndpoint("placeholder.queue.name", endpoint =>
+                configure.ReceiveEndpoint("placeholders.getall", endpoint =>
                 {
                     endpoint.Consumer<GetAllPlaceholdersConsumer>(serviceProvider);
                     EndpointConvention.Map<GetAllPlaceholdersCommand>(endpoint.InputAddress);
                 });
 
-                configure.ReceiveEndpoint("placeholder.queue.name", endpoint =>
+                configure.ReceiveEndpoint("placeholder.getsingle", endpoint =>
                 {
                     endpoint.Consumer<GetSinglePlaceholderConsumer>(serviceProvider);
-                    EndpointConvention.Map<GetAllPlaceholdersCommand>(endpoint.InputAddress);
+                    EndpointConvention.Map<GetSinglePlaceholderCommand>(endpoint.InputAddress);
                 });
             }));
 

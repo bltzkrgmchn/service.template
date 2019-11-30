@@ -4,7 +4,7 @@ namespace Service.Template.Services
 {
     public class GetSinglePlaceholderResponse
     {
-        public Placeholder Placeholders { get; set; }
+        public Placeholder Placeholder { get; set; }
     }
 }
 
