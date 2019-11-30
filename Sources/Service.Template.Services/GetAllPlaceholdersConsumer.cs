@@ -16,9 +16,9 @@ namespace Service.Template.Services
 
         public async Task Consume(ConsumeContext<GetAllPlaceholdersCommand> context)
         {
-            List<Placeholder> result = this.service.Get();
+            List<Placeholder> placeholders = this.service.Get();
 
-            await context.RespondAsync<GetAllPlaceholderResponse>(result);
+            await context.RespondAsync(new GetAllPlaceholderResponse { Placeholders = placeholders});
         }
     }
 }

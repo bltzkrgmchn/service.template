@@ -5,10 +5,19 @@ framework : netcore22
 group main
 source https://www.nuget.org/api/v2
     nuget MassTransit 5.5.6
+    nuget MassTransit.RabbitMQ 5.5.6
+    nuget MassTransit.Extensions.Logging 5.5.6
     nuget MassTransit.Extensions.DependencyInjection 5.5.6
     nuget Microsoft.Extensions.Configuration 3.0.1
     nuget Microsoft.Extensions.Configuration.Json 3.0.1
     nuget Microsoft.AspNetCore 2.2.0
+    nuget Microsoft.AspNetCore.Hosting 2.2.0
+    nuget Microsoft.AspNetCore.Hosting.Abstractions 2.2.0
+    nuget Microsoft.AspNetCore.Hosting.Server.Abstractions 2.2.0
+    nuget Microsoft.AspNetCore.Mvc 2.2.0
+    nuget Microsoft.AspNetCore.Server.Kestrel 2.2.0
+    nuget Microsoft.AspNetCore.Server.Kestrel.Core 2.2.0
+    nuget Microsoft.AspNetCore.Server.Kestrel.Https 2.2.0
     nuget Newtonsoft.Json 12.0.3
 
 group testing

@@ -17,7 +17,7 @@ namespace Service.Template.Services
         {
             Placeholder placeholder = this.service.Get(context.Message.Name);
 
-            await context.RespondAsync<GetSinglePlaceholderResponse>(placeholder);
+            await context.RespondAsync(new GetSinglePlaceholderResponse { Placeholder = placeholder });
         }
     }
 }

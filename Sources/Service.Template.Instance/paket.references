@@ -1,5 +1,6 @@
 group main
     MassTransit
+    MassTransit.RabbitMQ
     MassTransit.Extensions.DependencyInjection
     Microsoft.Extensions.Configuration
     Microsoft.Extensions.Configuration.Json

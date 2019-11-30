@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using MassTransit;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MassTransit;
+using Microsoft.Extensions.Logging;
 using Service.Template.Services;
 using Service.Template.Core;
 using Service.Template.Data;
@@ -33,6 +34,8 @@ namespace Service.Template.Instance
 
             services.AddSingleton(serviceProvider => Bus.Factory.CreateUsingInMemory(configure =>
             {
+                //var host = configure.Host("localhost", "/", h => { });
+
                 configure.ReceiveEndpoint("placeholders.getall", endpoint =>
                 {
                     endpoint.Consumer<GetAllPlaceholdersConsumer>(serviceProvider);
