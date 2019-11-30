@@ -1,9 +1,9 @@
 type file
 id Service.Template
 title Service.Template
-authors baal
-owners baal
-description Minimal Service template using NancyFX
+authors BalandinAI
+owners BalandinAI
+description Web Api service template, decoupled using MassTransit 
 requireLicenseAcceptance false
 files
 	bin/Release/ ==> lib/

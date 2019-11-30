@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Service.Template.Instance.Gateways
+namespace Service.Template.Core
 {
     public interface IPlaceholderGateway
     {

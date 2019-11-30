@@ -1,35 +1,59 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Nancy.Owin;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
+using MassTransit;
+using Service.Template.Services;
+using Service.Template.Core;
+using Service.Template.Data;
 
 namespace Service.Template.Instance
 {
+
     public class Startup
     {
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder application)
         {
-            app.UseOwin(x => x.UseNancy());
+            application.UseMvc();
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHostedService<HelloWorldHostedService>();
-        }
+            services.AddMvc();
 
-        public class HelloWorldHostedService : BackgroundService
-        {
-            protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+            services.AddScoped<IPlaceholderService, PlaceholderService>();
+            services.AddScoped<IPlaceholderGateway, PlaceholderGateway>();
+            services.AddScoped<GetAllPlaceholdersConsumer>();
+            services.AddScoped<GetSinglePlaceholderConsumer>();
+
+            services.AddMassTransit(x =>
             {
-                while (!stoppingToken.IsCancellationRequested)
+                x.AddConsumer<GetAllPlaceholdersConsumer>();
+                x.AddConsumer<GetSinglePlaceholderConsumer>();
+            });
+
+            services.AddSingleton(serviceProvider => Bus.Factory.CreateUsingInMemory(configure =>
+            {
+                configure.ReceiveEndpoint("placeholder.queue.name", endpoint =>
                 {
-                    Console.WriteLine("Hello World");
-                    await Task.Delay(10000, stoppingToken);
-                }
-            }
+                    endpoint.Consumer<GetAllPlaceholdersConsumer>(serviceProvider);
+                    EndpointConvention.Map<GetAllPlaceholdersCommand>(endpoint.InputAddress);
+                });
+
+                configure.ReceiveEndpoint("placeholder.queue.name", endpoint =>
+                {
+                    endpoint.Consumer<GetSinglePlaceholderConsumer>(serviceProvider);
+                    EndpointConvention.Map<GetAllPlaceholdersCommand>(endpoint.InputAddress);
+                });
+            }));
+
+            services.AddSingleton<IPublishEndpoint>(serviceProvider => serviceProvider.GetRequiredService<IBusControl>());
+            services.AddSingleton<ISendEndpointProvider>(serviceProvider => serviceProvider.GetRequiredService<IBusControl>());
+            services.AddSingleton<IBus>(serviceProvider => serviceProvider.GetRequiredService<IBusControl>());
+
+            services.AddScoped(serviceProvider => serviceProvider.GetRequiredService<IBus>().CreateRequestClient<GetAllPlaceholdersCommand>());
+            services.AddScoped(serviceProvider => serviceProvider.GetRequiredService<IBus>().CreateRequestClient<GetSinglePlaceholderCommand>());
+
+            services.AddSingleton<IHostedService, BusService>();
         }
     }
 }

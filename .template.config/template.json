@@ -4,8 +4,8 @@
     "classifications": [
         "WebAPI"
     ],
-    "name": "Minimal NancyFX Service",
-    "identity": "Minimal NancyFX Service",
+    "name": "Web Api Service with MassTransit",
+    "identity": "Web Api Service with MassTransit",
     "shortName": "Service",
     "tags": {
         "language": "C#",
