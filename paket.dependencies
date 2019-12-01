@@ -19,6 +19,11 @@ source https://www.nuget.org/api/v2
     nuget Microsoft.AspNetCore.Server.Kestrel.Core 2.2.0
     nuget Microsoft.AspNetCore.Server.Kestrel.Https 2.2.0
     nuget Newtonsoft.Json 12.0.3
+    nuget Microsoft.EntityFrameworkCore 2.2.6
+    nuget Microsoft.EntityFrameworkCore.SqlServer 2.2.6
+    nuget Microsoft.EntityFrameworkCore.Tools 2.2.6
+    nuget Microsoft.EntityFrameworkCore.Abstractions 2.2.6
+    nuget Microsoft.EntityFrameworkCore.Relational 2.2.6
 
 group testing
 source https://www.nuget.org/api/v2
