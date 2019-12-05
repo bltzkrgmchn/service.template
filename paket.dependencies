@@ -1,8 +1,14 @@
+source https://www.nuget.org/api/v2
+version 5.241.1 --prefer-nuget
 strategy : min
 framework : netcore22
 
 group main
 source https://www.nuget.org/api/v2
+    nuget Microsoft.NETCore.Targets 2.0.0
+    nuget Microsoft.NETCore.Platforms 2.2.4
+    nuget NETStandard.Library 2.0.3
+    
     nuget MassTransit 5.5.6
     nuget MassTransit.RabbitMQ 5.5.6
     nuget MassTransit.Extensions.Logging 5.5.6
