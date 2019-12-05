@@ -1,5 +1,5 @@
 ﻿using MassTransit;
-using Service.Template.Services;
+using Service.Template.Consumers;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System;

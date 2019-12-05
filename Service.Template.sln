@@ -16,8 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		build.cake = build.cake
 		build.ps1 = build.ps1
-		build.sh = build.sh
 		paket.dependencies = paket.dependencies
+		paket.lock = paket.lock
 		README.md = README.md
 		RELEASE_NOTES.md = RELEASE_NOTES.md
 	EndProjectSection
@@ -38,7 +38,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Template.Core", "So
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Template.Data", "Sources\Service.Template.Data\Service.Template.Data.csproj", "{C00DAB5C-6CA1-48C8-8DE9-0C91DD51C784}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Template.Services", "Sources\Service.Template.Services\Service.Template.Services.csproj", "{2B795027-AED6-4F72-996D-2B0DA49D0BF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Template.Consumers", "Sources\Service.Template.Consumers\Service.Template.Consumers.csproj", "{2B795027-AED6-4F72-996D-2B0DA49D0BF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

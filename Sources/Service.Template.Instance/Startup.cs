@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Service.Template.Services;
+using Service.Template.Consumers;
 using Service.Template.Core;
 using Service.Template.Data;
 

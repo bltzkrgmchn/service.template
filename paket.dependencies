@@ -1,5 +1,4 @@
-source https://www.nuget.org/api/v2
-strategy : max
+strategy : min
 framework : netcore22
 
 group main
@@ -8,37 +7,26 @@ source https://www.nuget.org/api/v2
     nuget MassTransit.RabbitMQ 5.5.6
     nuget MassTransit.Extensions.Logging 5.5.6
     nuget MassTransit.Extensions.DependencyInjection 5.5.6
-    nuget Microsoft.Extensions.Configuration 3.0.1
-    nuget Microsoft.Extensions.Configuration.Json 3.0.1
+    nuget Microsoft.Extensions.Configuration 2.2.0
+    nuget Microsoft.Extensions.Configuration.Json 2.2.0
     nuget Microsoft.AspNetCore 2.2.0
-    nuget Microsoft.AspNetCore.Hosting 2.2.0
-    nuget Microsoft.AspNetCore.Hosting.Abstractions 2.2.0
-    nuget Microsoft.AspNetCore.Hosting.Server.Abstractions 2.2.0
-    nuget Microsoft.AspNetCore.Mvc 2.2.0
-    nuget Microsoft.AspNetCore.Server.Kestrel 2.2.0
-    nuget Microsoft.AspNetCore.Server.Kestrel.Core 2.2.0
-    nuget Microsoft.AspNetCore.Server.Kestrel.Https 2.2.0
-    nuget Newtonsoft.Json 12.0.3
     nuget Microsoft.EntityFrameworkCore 2.2.6
     nuget Microsoft.EntityFrameworkCore.SqlServer 2.2.6
-    nuget Microsoft.EntityFrameworkCore.Tools 2.2.6
-    nuget Microsoft.EntityFrameworkCore.Abstractions 2.2.6
-    nuget Microsoft.EntityFrameworkCore.Relational 2.2.6
 
 group testing
 source https://www.nuget.org/api/v2
-    nuget NUnit
-    nuget FakeItEasy
-    nuget FluentAssertions
+    nuget NUnit 3.12.0
+    nuget FakeItEasy 5.5.0
+    nuget FluentAssertions 5.9.0
 
 group tools
 source https://www.nuget.org/api/v2
-    nuget Cake
+    nuget Cake 0.35.0
 
 group addins
 source https://www.nuget.org/api/v2
-    nuget Cake.Paket
+    nuget Cake.Paket 4.0.0
 
 group modules
 source https://www.nuget.org/api/v2
-    nuget Cake.Paket.Module
+    nuget Cake.Paket.Module 4.0.0
