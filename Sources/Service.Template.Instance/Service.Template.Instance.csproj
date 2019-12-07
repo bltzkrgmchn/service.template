@@ -7,7 +7,7 @@
         <RuntimeFrameworkVersion>2.2.8</RuntimeFrameworkVersion>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-      <DocumentationFile>D:\WORK\service.template\Sources\Service.Template.Instance\Service.Template.Instance.xml</DocumentationFile>
+      <DocumentationFile>.\Sources\Service.Template.Instance\Service.Template.Instance.xml</DocumentationFile>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />

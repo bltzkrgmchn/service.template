@@ -6,7 +6,7 @@
         <RuntimeFrameworkVersion>2.2.8</RuntimeFrameworkVersion>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-      <DocumentationFile>D:\WORK\service.template\Sources\Service.Template.Consumers\Service.Template.Consumers.xml</DocumentationFile>
+      <DocumentationFile>.\Sources\Service.Template.Consumers\Service.Template.Consumers.xml</DocumentationFile>
     </PropertyGroup>
     <ItemGroup>
         <ProjectReference Include="..\Service.Template.Core\Service.Template.Core.csproj" />
