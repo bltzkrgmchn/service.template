@@ -7,7 +7,7 @@
         <RuntimeFrameworkVersion>2.2.8</RuntimeFrameworkVersion>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-      <DocumentationFile>.\Tests\Service.Template.Instance.Tests\Service.Template.Instance.Tests.xml</DocumentationFile>
+      <DocumentationFile>.\Service.Template.Instance.Tests.xml</DocumentationFile>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="nunit" Version="3.11.0" />
