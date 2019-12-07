@@ -2,6 +2,9 @@ using NUnit.Framework;
 
 namespace Service.Template.ComponentTests
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class PlaceholderTests
     {
         [Test]

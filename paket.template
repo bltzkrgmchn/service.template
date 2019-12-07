@@ -1,9 +1,14 @@
-type file
 id Service.Template
+type file
 title Service.Template
 authors BalandinAI
 owners BalandinAI
 description Web Api service template, decoupled using MassTransit 
 requireLicenseAcceptance false
 files
-	bin/Release/ ==> lib/
+	*.* ==> content/
+	.paket ==> content/.paket
+	.template.config ==> content/.template.config
+	Sources ==> content/Sources
+	Tests ==> content/Tests
+	!**/bin/**.*
