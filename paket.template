@@ -6,9 +6,4 @@ owners BalandinAI
 description Web Api service template, decoupled using MassTransit 
 requireLicenseAcceptance false
 files
-	*.* ==> content/
-	.paket ==> content/.paket
-	.template.config ==> content/.template.config
-	Sources ==> content/Sources
-	Tests ==> content/Tests
-	!**/bin/**.*
+	**/bin/Release/**/*.* ==> lib/

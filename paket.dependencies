@@ -32,6 +32,8 @@ source https://www.nuget.org/api/v2
 group addins
 source https://www.nuget.org/api/v2
     nuget Cake.Paket 4.0.0
+    nuget Cake.ExtendedNuGet 2.1.1
+    nuget NuGet.Protocol 5.4.0
 
 group modules
 source https://www.nuget.org/api/v2
