@@ -4,5 +4,76 @@
         <name>Service.Template.Consumers</name>
     </assembly>
     <members>
+        <member name="T:Service.Template.Consumers.GetAllPlaceholdersCommand">
+            <summary>
+            Команда получения списка Placeholder.
+            </summary>
+        </member>
+        <member name="T:Service.Template.Consumers.GetAllPlaceholdersConsumer">
+            <summary>
+            Обработчик сообщения получения списка Placeholder.
+            </summary>
+        </member>
+        <member name="M:Service.Template.Consumers.GetAllPlaceholdersConsumer.#ctor(Service.Template.Core.IPlaceholderService)">
+            <summary>
+            Инициализирует новый экземпляр класса <see cref="T:Service.Template.Consumers.GetAllPlaceholdersConsumer"/>.
+            </summary>
+            <param name="service">Сервисный объект для управления Placeholder.</param>
+        </member>
+        <member name="M:Service.Template.Consumers.GetAllPlaceholdersConsumer.Consume(MassTransit.ConsumeContext{Service.Template.Consumers.GetAllPlaceholdersCommand})">
+            <summary>
+            Обработать сообщение.
+            </summary>
+            <param name="context">Контекст обработки сообщения.</param>
+            <returns>Асинхронная операция <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="T:Service.Template.Consumers.GetAllPlaceholdersResponse">
+            <summary>
+            Ответ на команду получения списка Placeholder.
+            </summary>
+        </member>
+        <member name="P:Service.Template.Consumers.GetAllPlaceholdersResponse.Placeholders">
+            <summary>
+            Получает или задает список Placeholder.
+            </summary>
+        </member>
+        <member name="T:Service.Template.Consumers.GetPlaceholderCommand">
+            <summary>
+            Команда получения Placeholder.
+            </summary>
+        </member>
+        <member name="P:Service.Template.Consumers.GetPlaceholderCommand.Id">
+            <summary>
+            Получает или задает идентификатор Placeholder.
+            </summary>
+        </member>
+        <member name="T:Service.Template.Consumers.GetPlaceholderConsumer">
+            <summary>
+            Обработчик сообщения получения Placeholder.
+            </summary>
+        </member>
+        <member name="M:Service.Template.Consumers.GetPlaceholderConsumer.#ctor(Service.Template.Core.IPlaceholderService)">
+            <summary>
+            Инициализирует новый экземпляр класса <see cref="T:Service.Template.Consumers.GetPlaceholderConsumer"/>.
+            </summary>
+            <param name="service">Сервисный объект для управления Placeholder.</param>
+        </member>
+        <member name="M:Service.Template.Consumers.GetPlaceholderConsumer.Consume(MassTransit.ConsumeContext{Service.Template.Consumers.GetPlaceholderCommand})">
+            <summary>
+            Обработать сообщение.
+            </summary>
+            <param name="context">Контекст обработки сообщения.</param>
+            <returns>Асинхронная операция <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="T:Service.Template.Consumers.GetPlaceholderResponse">
+            <summary>
+            Ответ на команду получения Placeholder.
+            </summary>
+        </member>
+        <member name="P:Service.Template.Consumers.GetPlaceholderResponse.Placeholder">
+            <summary>
+            Получает или задает Placeholder.
+            </summary>
+        </member>
     </members>
 </doc>

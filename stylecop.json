@@ -3,7 +3,8 @@
   "settings": {
     "documentationRules": {
       "xmlHeader": false,
-      "documentExposedElements": false
+        "documentExposedElements": false,
+        "documentationCulture": "ru-RU"
     },
     "layoutRules": {
       "newlineAtEndOfFile": "omit"

@@ -5,23 +5,33 @@ using Microsoft.Extensions.Hosting;
 using Service.Template.Consumers;
 using Service.Template.Core;
 using Service.Template.Data;
-using Service.Template.WebApi;
 
 namespace Service.Template.Instance
 {
+    /// <summary>
+    /// Инициализация приложения.
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// Конфигурация приложения.
+        /// </summary>
+        /// <param name="application">Приложение.</param>
         public void Configure(IApplicationBuilder application)
         {
             application.UseMvc();
         }
 
+        /// <summary>
+        /// Конфигурация сервисов.
+        /// </summary>
+        /// <param name="services">Сервисы.</param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
 
             services.AddScoped<IPlaceholderService, PlaceholderService>();
-            services.AddScoped<IPlaceholderGateway, PlaceholderGateway>();
+            services.AddScoped<IPlaceholderRepository, PlaceholderRepository>();
             services.AddScoped<GetAllPlaceholdersConsumer>();
             services.AddScoped<GetPlaceholderConsumer>();
 

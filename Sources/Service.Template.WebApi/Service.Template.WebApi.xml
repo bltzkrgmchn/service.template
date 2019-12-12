@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Service.Template.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:Service.Template.WebApi.PlaceholderController">
+            <summary>
+            Конролер Placeholder.
+            </summary>
+        </member>
+        <member name="M:Service.Template.WebApi.PlaceholderController.#ctor(MassTransit.IRequestClient{Service.Template.Consumers.GetPlaceholderCommand},MassTransit.IRequestClient{Service.Template.Consumers.GetAllPlaceholdersCommand})">
+            <summary>
+            Инициализирует новый экземпляр класса <see cref="T:Service.Template.WebApi.PlaceholderController"/>.
+            </summary>
+            <param name="getPlaceholderClient">Клиент получения Placeholder.</param>
+            <param name="getAllPlaceholdersClient">Клиент получения списка Placeholder.</param>
+        </member>
+        <member name="M:Service.Template.WebApi.PlaceholderController.GetAll">
+            <summary>
+            Получить список Placeholder.
+            </summary>
+            <returns>Список Placeholder.</returns>
+        </member>
+        <member name="M:Service.Template.WebApi.PlaceholderController.Get(System.String)">
+            <summary>
+            Получить Placeholder.
+            </summary>
+            <param name="id">Идентификатор Placeholder.</param>
+            <returns>Placeholder.</returns>
+        </member>
+    </members>
+</doc>

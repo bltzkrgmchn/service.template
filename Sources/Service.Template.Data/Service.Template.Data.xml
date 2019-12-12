@@ -4,5 +4,49 @@
         <name>Service.Template.Data</name>
     </assembly>
     <members>
+        <member name="T:Service.Template.Data.PlaceholderContext">
+            <summary>
+            Контекст базы данных Placeholder.
+            </summary>
+        </member>
+        <member name="M:Service.Template.Data.PlaceholderContext.#ctor(System.String)">
+            <summary>
+            Инициализирует новый экземпляр класса <see cref="T:Service.Template.Data.PlaceholderContext"/>.
+            </summary>
+            <param name="connectionString">Строка подключения.</param>
+        </member>
+        <member name="P:Service.Template.Data.PlaceholderContext.Placeholders">
+            <summary>
+            Получает или задает содержимое базы данных Placeholder.
+            </summary>
+        </member>
+        <member name="M:Service.Template.Data.PlaceholderContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Service.Template.Data.PlaceholderDto">
+            <summary>
+            Placeholder.
+            </summary>
+        </member>
+        <member name="P:Service.Template.Data.PlaceholderDto.Id">
+            <summary>
+            Получает или задает идентификатор Placeholder.
+            </summary>
+        </member>
+        <member name="T:Service.Template.Data.PlaceholderRepository">
+            <inheritdoc />
+        </member>
+        <member name="M:Service.Template.Data.PlaceholderRepository.#ctor(System.String)">
+            <summary>
+            Инициализирует новый экземпляр класса <see cref="T:Service.Template.Data.PlaceholderRepository"/>.
+            </summary>
+            <param name="connectionString">Строка подключения.</param>
+        </member>
+        <member name="M:Service.Template.Data.PlaceholderRepository.Find">
+            <inheritdoc />
+        </member>
+        <member name="M:Service.Template.Data.PlaceholderRepository.Find(System.String)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

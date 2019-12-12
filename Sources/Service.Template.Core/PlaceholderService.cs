@@ -2,23 +2,30 @@
 
 namespace Service.Template.Core
 {
+    /// <inheritdoc/>
     public class PlaceholderService : IPlaceholderService
     {
-        private readonly IPlaceholderGateway placeholderGateway;
+        private readonly IPlaceholderRepository placeholderRepository;
 
-        public PlaceholderService(IPlaceholderGateway placeholderGateway)
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="PlaceholderService"/>.
+        /// </summary>
+        /// <param name="placeholderRepository">Хранилище Placeholder.</param>
+        public PlaceholderService(IPlaceholderRepository placeholderRepository)
         {
-            this.placeholderGateway = placeholderGateway;
+            this.placeholderRepository = placeholderRepository;
         }
 
-        public Placeholder Get(string name)
+        /// <inheritdoc/>
+        public Placeholder Get(string id)
         {
-            return this.placeholderGateway.Find(name);
+            return this.placeholderRepository.Find(id);
         }
 
+        /// <inheritdoc/>
         public List<Placeholder> Get()
         {
-            return this.placeholderGateway.Find();
+            return this.placeholderRepository.Find();
         }
     }
 }

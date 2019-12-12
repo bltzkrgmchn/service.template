@@ -1,22 +1,21 @@
 ﻿using MassTransit;
 using Service.Template.Core;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Service.Template.Consumers
 {
     /// <summary>
-    /// Обработчик сообщения получения списка Placeholder.
+    /// Обработчик сообщения получения Placeholder.
     /// </summary>
-    public class GetAllPlaceholdersConsumer : IConsumer<GetAllPlaceholdersCommand>
+    public class GetPlaceholderConsumer : IConsumer<GetPlaceholderCommand>
     {
         private readonly IPlaceholderService service;
 
         /// <summary>
-        /// Инициализирует новый экземпляр класса <see cref="GetAllPlaceholdersConsumer"/>.
+        /// Инициализирует новый экземпляр класса <see cref="GetPlaceholderConsumer"/>.
         /// </summary>
         /// <param name="service">Сервисный объект для управления Placeholder.</param>
-        public GetAllPlaceholdersConsumer(IPlaceholderService service)
+        public GetPlaceholderConsumer(IPlaceholderService service)
         {
             this.service = service;
         }
@@ -26,11 +25,11 @@ namespace Service.Template.Consumers
         /// </summary>
         /// <param name="context">Контекст обработки сообщения.</param>
         /// <returns>Асинхронная операция <see cref="Task"/>.</returns>
-        public async Task Consume(ConsumeContext<GetAllPlaceholdersCommand> context)
+        public async Task Consume(ConsumeContext<GetPlaceholderCommand> context)
         {
-            List<Placeholder> placeholders = this.service.Get();
+            Placeholder placeholder = this.service.Get(context.Message.Id);
 
-            await context.RespondAsync(new GetAllPlaceholdersResponse { Placeholders = placeholders });
+            await context.RespondAsync(new GetPlaceholderResponse { Placeholder = placeholder });
         }
     }
 }

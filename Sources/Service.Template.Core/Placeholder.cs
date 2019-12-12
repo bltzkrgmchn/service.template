@@ -1,12 +1,22 @@
 namespace Service.Template.Core
 {
+    /// <summary>
+    /// Placeholder.
+    /// </summary>
     public class Placeholder
     {
-        public Placeholder(string name)
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="Placeholder"/>.
+        /// </summary>
+        /// <param name="id">Идентификатор Placeholder.</param>
+        public Placeholder(string id)
         {
-            this.Name = name;
+            this.Id = id;
         }
 
-        public string Name { get; private set; }
+        /// <summary>
+        /// Получает идентификатор Placeholder.
+        /// </summary>
+        public string Id { get; private set; }
     }
 }

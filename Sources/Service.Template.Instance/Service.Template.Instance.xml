@@ -4,5 +4,55 @@
         <name>Service.Template.Instance</name>
     </assembly>
     <members>
+        <member name="T:Service.Template.Instance.BusService">
+            <inheritdoc/>
+        </member>
+        <member name="M:Service.Template.Instance.BusService.#ctor(MassTransit.IBusControl)">
+            <summary>
+            Инициализирует новый экземпляр класса <see cref="T:Service.Template.Instance.BusService"/>.
+            </summary>
+            <param name="busControl">Контролер шины.</param>
+        </member>
+        <member name="M:Service.Template.Instance.BusService.StartAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Service.Template.Instance.BusService.StopAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Service.Template.Instance.Program">
+            <summary>
+            Точка входа в приложение.
+            </summary>
+        </member>
+        <member name="M:Service.Template.Instance.Program.Main(System.String[])">
+            <summary>
+            Точка входа в приложение.
+            </summary>
+            <param name="args">Аргументы запуска приложения.</param>
+        </member>
+        <member name="M:Service.Template.Instance.Program.BuildWebHost(System.String[])">
+            <summary>
+            Построение хоста приложения.
+            </summary>
+            <param name="args">Аргументы запуска приложения.</param>
+            <returns>Хост приложения.</returns>
+        </member>
+        <member name="T:Service.Template.Instance.Startup">
+            <summary>
+            Инициализация приложения.
+            </summary>
+        </member>
+        <member name="M:Service.Template.Instance.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Конфигурация приложения.
+            </summary>
+            <param name="application">Приложение.</param>
+        </member>
+        <member name="M:Service.Template.Instance.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Конфигурация сервисов.
+            </summary>
+            <param name="services">Сервисы.</param>
+        </member>
     </members>
 </doc>

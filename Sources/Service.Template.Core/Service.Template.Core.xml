@@ -4,5 +4,72 @@
         <name>Service.Template.Core</name>
     </assembly>
     <members>
+        <member name="T:Service.Template.Core.IPlaceholderRepository">
+            <summary>
+            Хранилище Placeholder.
+            </summary>
+        </member>
+        <member name="M:Service.Template.Core.IPlaceholderRepository.Find">
+            <summary>
+            Получает список Placeholder.
+            </summary>
+            <returns>Список Placeholder.</returns>
+        </member>
+        <member name="M:Service.Template.Core.IPlaceholderRepository.Find(System.String)">
+            <summary>
+            Получает Placeholder.
+            </summary>
+            <param name="id">Идентификатор Placeholder.</param>
+            <returns>Placeholder.</returns>
+        </member>
+        <member name="T:Service.Template.Core.IPlaceholderService">
+            <summary>
+            Сервисный объект для управления Placeholder.
+            </summary>
+        </member>
+        <member name="M:Service.Template.Core.IPlaceholderService.Get(System.String)">
+            <summary>
+            Получить Placeholder.
+            </summary>
+            <param name="id">Идентификатор Placeholder.</param>
+            <returns>Placeholder.</returns>
+        </member>
+        <member name="M:Service.Template.Core.IPlaceholderService.Get">
+            <summary>
+            Получить список Placeholder.
+            </summary>
+            <returns>Список Placeholder.</returns>
+        </member>
+        <member name="T:Service.Template.Core.Placeholder">
+            <summary>
+            Placeholder.
+            </summary>
+        </member>
+        <member name="M:Service.Template.Core.Placeholder.#ctor(System.String)">
+            <summary>
+            Инициализирует новый экземпляр класса <see cref="T:Service.Template.Core.Placeholder"/>.
+            </summary>
+            <param name="id">Идентификатор Placeholder.</param>
+        </member>
+        <member name="P:Service.Template.Core.Placeholder.Id">
+            <summary>
+            Получает идентификатор Placeholder.
+            </summary>
+        </member>
+        <member name="T:Service.Template.Core.PlaceholderService">
+            <inheritdoc/>
+        </member>
+        <member name="M:Service.Template.Core.PlaceholderService.#ctor(Service.Template.Core.IPlaceholderRepository)">
+            <summary>
+            Инициализирует новый экземпляр класса <see cref="T:Service.Template.Core.PlaceholderService"/>.
+            </summary>
+            <param name="placeholderRepository">Хранилище Placeholder.</param>
+        </member>
+        <member name="M:Service.Template.Core.PlaceholderService.Get(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Service.Template.Core.PlaceholderService.Get">
+            <inheritdoc/>
+        </member>
     </members>
 </doc>
