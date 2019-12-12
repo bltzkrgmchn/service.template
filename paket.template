@@ -1,8 +1,8 @@
 id Service.Template
 type file
 title Service.Template
-authors BalandinAI
-owners BalandinAI
+authors Aleksey Balandin
+owners Aleksey Balandin
 description Web Api service template, decoupled using MassTransit 
 requireLicenseAcceptance false
 files

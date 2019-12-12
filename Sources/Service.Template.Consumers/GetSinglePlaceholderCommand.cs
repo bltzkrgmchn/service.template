@@ -1,6 +1,6 @@
 ﻿namespace Service.Template.Consumers
 {
-    public class GetSinglePlaceholderCommand
+    public class GetPlaceholderCommand
     {
         public string Name { get; set; }
     }

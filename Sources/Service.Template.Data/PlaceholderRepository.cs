@@ -27,7 +27,7 @@ namespace Service.Template.Data
         {
             using (PlaceholderContext context = new PlaceholderContext(this.connectionString))
             {
-                PlaceholderDto dto = context.Placeholders.SingleOrDefault(o => o.Name == name);
+                PlaceholderDto dto = context.Placeholders.FirstOrDefault(o => o.Name == name);
                 return new Placeholder(dto.Name);
             }
         }

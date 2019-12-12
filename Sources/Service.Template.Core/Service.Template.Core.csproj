@@ -4,9 +4,13 @@
         <TargetFramework>netcoreapp2.2</TargetFramework>
         <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
         <RuntimeFrameworkVersion>2.2.8</RuntimeFrameworkVersion>
+        <CodeAnalysisRuleSet>$(SolutionDir)\stylecop.ruleset</CodeAnalysisRuleSet>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
       <DocumentationFile>.\Service.Template.Core.xml</DocumentationFile>
     </PropertyGroup>
+    <ItemGroup>
+        <AdditionalFiles Include="$(SolutionDir)\stylecop.json" />
+    </ItemGroup>
     <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

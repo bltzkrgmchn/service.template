@@ -1,21 +1,21 @@
 ﻿using MassTransit;
-using Service.Template.Consumers;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
+using Service.Template.Consumers;
 using System;
 using System.Net;
+using System.Threading.Tasks;
 
-namespace Service.Template.Instance
+namespace Service.Template.WebApi
 {
     [Route("/placeholders")]
     public class PlaceholderController : Controller
     {
-        private readonly IRequestClient<GetSinglePlaceholderCommand> getSinglePlaceholderClient;
+        private readonly IRequestClient<GetPlaceholderCommand> getPlaceholderClient;
         private readonly IRequestClient<GetAllPlaceholdersCommand> getAllPlaceholdersClient;
 
-        public PlaceholderController(IRequestClient<GetSinglePlaceholderCommand> getSinglePlaceholderClient, IRequestClient<GetAllPlaceholdersCommand> getAllPlaceholdersClient)
+        public PlaceholderController(IRequestClient<GetPlaceholderCommand> getPlaceholderClient, IRequestClient<GetAllPlaceholdersCommand> getAllPlaceholdersClient)
         {
-            this.getSinglePlaceholderClient = getSinglePlaceholderClient;
+            this.getPlaceholderClient = getPlaceholderClient;
             this.getAllPlaceholdersClient = getAllPlaceholdersClient;
         }
 
@@ -41,12 +41,12 @@ namespace Service.Template.Instance
 
         [HttpGet]
         [Route("{placeholderName}")]
-        public async Task<IActionResult> GetSingle(string placeholderName)
+        public async Task<IActionResult> Get(string placeholderName)
         {
             try
             {
-                RequestHandle<GetSinglePlaceholderCommand> request = this.getSinglePlaceholderClient.Create(new GetSinglePlaceholderCommand { Name = placeholderName });
-                var response = await request.GetResponse<GetSinglePlaceholderResponse>();
+                RequestHandle<GetPlaceholderCommand> request = this.getPlaceholderClient.Create(new GetPlaceholderCommand { Name = placeholderName });
+                var response = await request.GetResponse<GetPlaceholderResponse>();
                 return this.Ok(response.Message.Placeholder);
             }
             catch (RequestTimeoutException)

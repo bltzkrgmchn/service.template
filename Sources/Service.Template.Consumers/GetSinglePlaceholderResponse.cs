@@ -2,7 +2,7 @@
 
 namespace Service.Template.Consumers
 {
-    public class GetSinglePlaceholderResponse
+    public class GetPlaceholderResponse
     {
         public Placeholder Placeholder { get; set; }
     }

@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.Hosting;
-using MassTransit;
-using System.Threading.Tasks;
+﻿using MassTransit;
+using Microsoft.Extensions.Hosting;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Service.Template.Instance
 {

@@ -2,14 +2,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Service.Template.Consumers;
 using Service.Template.Core;
 using Service.Template.Data;
+using Service.Template.WebApi;
 
 namespace Service.Template.Instance
 {
-
     public class Startup
     {
         public void Configure(IApplicationBuilder application)
@@ -24,28 +23,26 @@ namespace Service.Template.Instance
             services.AddScoped<IPlaceholderService, PlaceholderService>();
             services.AddScoped<IPlaceholderGateway, PlaceholderGateway>();
             services.AddScoped<GetAllPlaceholdersConsumer>();
-            services.AddScoped<GetSinglePlaceholderConsumer>();
+            services.AddScoped<GetPlaceholderConsumer>();
 
             services.AddMassTransit(x =>
             {
                 x.AddConsumer<GetAllPlaceholdersConsumer>();
-                x.AddConsumer<GetSinglePlaceholderConsumer>();
+                x.AddConsumer<GetPlaceholderConsumer>();
             });
 
             services.AddSingleton(serviceProvider => Bus.Factory.CreateUsingInMemory(configure =>
             {
-                //var host = configure.Host("localhost", "/", h => { });
-
-                configure.ReceiveEndpoint("placeholders.getall", endpoint =>
+                configure.ReceiveEndpoint("command.placeholders.getall", endpoint =>
                 {
                     endpoint.Consumer<GetAllPlaceholdersConsumer>(serviceProvider);
                     EndpointConvention.Map<GetAllPlaceholdersCommand>(endpoint.InputAddress);
                 });
 
-                configure.ReceiveEndpoint("placeholder.getsingle", endpoint =>
+                configure.ReceiveEndpoint("command.placeholder.get", endpoint =>
                 {
-                    endpoint.Consumer<GetSinglePlaceholderConsumer>(serviceProvider);
-                    EndpointConvention.Map<GetSinglePlaceholderCommand>(endpoint.InputAddress);
+                    endpoint.Consumer<GetPlaceholderConsumer>(serviceProvider);
+                    EndpointConvention.Map<GetPlaceholderCommand>(endpoint.InputAddress);
                 });
             }));
 
@@ -54,7 +51,7 @@ namespace Service.Template.Instance
             services.AddSingleton<IBus>(serviceProvider => serviceProvider.GetRequiredService<IBusControl>());
 
             services.AddScoped(serviceProvider => serviceProvider.GetRequiredService<IBus>().CreateRequestClient<GetAllPlaceholdersCommand>());
-            services.AddScoped(serviceProvider => serviceProvider.GetRequiredService<IBus>().CreateRequestClient<GetSinglePlaceholderCommand>());
+            services.AddScoped(serviceProvider => serviceProvider.GetRequiredService<IBus>().CreateRequestClient<GetPlaceholderCommand>());
 
             services.AddSingleton<IHostedService, BusService>();
         }

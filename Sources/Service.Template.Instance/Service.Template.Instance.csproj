@@ -5,6 +5,7 @@
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
         <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
         <RuntimeFrameworkVersion>2.2.8</RuntimeFrameworkVersion>
+        <CodeAnalysisRuleSet>$(SolutionDir)\stylecop.ruleset</CodeAnalysisRuleSet>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
       <DocumentationFile>.\Service.Template.Instance.xml</DocumentationFile>
@@ -17,6 +18,10 @@
     <ItemGroup>
         <ProjectReference Include="..\Service.Template.Consumers\Service.Template.Consumers.csproj" />
         <ProjectReference Include="..\Service.Template.Data\Service.Template.Data.csproj" />
+        <ProjectReference Include="..\Service.Template.WebApi\Service.Template.WebApi.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <AdditionalFiles Include="$(SolutionDir)\stylecop.json" />
     </ItemGroup>
     <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

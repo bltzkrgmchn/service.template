@@ -1,0 +1,5 @@
+group main
+    Microsoft.AspNetCore
+    Microsoft.AspNetCore.Mvc
+    MassTransit
+    Stylecop.Analyzers
