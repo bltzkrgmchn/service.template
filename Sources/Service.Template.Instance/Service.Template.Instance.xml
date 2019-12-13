@@ -42,6 +42,12 @@
             Инициализация приложения.
             </summary>
         </member>
+        <member name="M:Service.Template.Instance.Startup.#ctor(Microsoft.Extensions.Hosting.IHostingEnvironment)">
+            <summary>
+            Инициализирует новый экземпляр класса <see cref="T:Service.Template.Instance.Startup"/>.
+            </summary>
+            <param name="environment">Окружение приложения.</param>
+        </member>
         <member name="M:Service.Template.Instance.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
             <summary>
             Конфигурация приложения.

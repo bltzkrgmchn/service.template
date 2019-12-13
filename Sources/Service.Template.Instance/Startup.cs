@@ -1,5 +1,6 @@
 ﻿using MassTransit;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Service.Template.Consumers;
@@ -13,6 +14,22 @@ namespace Service.Template.Instance
     /// </summary>
     public class Startup
     {
+        private readonly IConfigurationRoot configuration;
+
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="Startup"/>.
+        /// </summary>
+        /// <param name="environment">Окружение приложения.</param>
+        public Startup(IHostingEnvironment environment)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(environment.ContentRootPath)
+                .AddJsonFile("appsettings.json", false, true)
+                .AddJsonFile("appsettings.production.json", true, true);
+
+            this.configuration = builder.Build();
+        }
+
         /// <summary>
         /// Конфигурация приложения.
         /// </summary>
@@ -30,10 +47,11 @@ namespace Service.Template.Instance
         {
             services.AddMvc();
 
-            services.AddScoped<IPlaceholderService, PlaceholderService>();
-            services.AddScoped<IPlaceholderRepository, PlaceholderRepository>();
-            services.AddScoped<GetAllPlaceholdersConsumer>();
-            services.AddScoped<GetPlaceholderConsumer>();
+            services.AddSingleton<IPlaceholderService, PlaceholderService>();
+            services.AddSingleton<IPlaceholderRepository, PlaceholderRepository>(o =>
+                new PlaceholderRepository(this.configuration.GetConnectionString("Placeholders")));
+            services.AddSingleton<GetAllPlaceholdersConsumer>();
+            services.AddSingleton<GetPlaceholderConsumer>();
 
             services.AddMassTransit(x =>
             {
