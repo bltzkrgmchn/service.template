@@ -1,8 +1,0 @@
-group main
-    MassTransit
-    MassTransit.RabbitMQ
-    MassTransit.Extensions.DependencyInjection
-    Microsoft.AspNetCore
-    Microsoft.Extensions.Configuration
-    Microsoft.Extensions.Configuration.Json
-    Stylecop.Analyzers

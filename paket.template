@@ -1,9 +1,0 @@
-id Service.Template
-type file
-title Service.Template
-authors Aleksey Balandin
-owners Aleksey Balandin
-description Web Api service template, decoupled using MassTransit 
-requireLicenseAcceptance false
-files
-	**/bin/Release/**/*.* ==> lib/

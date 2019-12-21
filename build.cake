@@ -1,6 +1,5 @@
-#tool paket:?package=NUnit.ConsoleRunner&group=main
-#addin paket:?package=Cake.Paket&version=4.0.0
-#addin paket:?package=Cake.ExtendedNuGet&version=2.1.1
+#tool nuget:?package=NUnit.ConsoleRunner&version=3.10.0
+#addin nuget:?package=Cake.ExtendedNuGet&version=2.1.1
 
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
@@ -10,7 +9,8 @@ var solution = "Service.Template.sln";
 var binaries = "./Sources/Service.Template.Instance/bin";
 var objects = "./Sources/Service.Template.Instance/obj";
 var packages = "./artefacts/packages";
-var templateNuspec = "service.template.nuspec";
+var templateNuspec = "./template.package";
+var serviceNuspec = "./Sources/Service.Template.Instance/Service.Template.Instance.package";
 
 Task("Clean")
     .Does(() =>
@@ -21,7 +21,6 @@ Task("Clean")
 Task("Restore")
     .Does(() =>
 {
-    PaketRestore();
     DotNetCoreRestore();
 });
 
@@ -47,10 +46,10 @@ Task("Tests")
 Task("Package").IsDependentOn("Build").Does(() =>
 {
     EnsureDirectoryExists(packages);
-    PaketPack(packages, new PaketPackSettings { Version = "1.0.0" });
+    NuGetPack(serviceNuspec, new NuGetPackSettings{ OutputDirectory = packages });
 });
 
-Task("PackageTemplate").IsDependentOn("Build").Does(() =>
+Task("Template").IsDependentOn("Build").Does(() =>
 {
     EnsureDirectoryExists(packages);
     NuGetPack(templateNuspec, new NuGetPackSettings{ OutputDirectory = packages });
@@ -59,8 +58,5 @@ Task("PackageTemplate").IsDependentOn("Build").Does(() =>
 Task("Default")
     .IsDependentOn("Tests")
     .IsDependentOn("Package");
-
-Task("Template")
-    .IsDependentOn("PackageTemplate");
 
 RunTarget(target);

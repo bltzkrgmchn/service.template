@@ -1,7 +1,0 @@
-group main
-    Stylecop.Analyzers
-
-group testing
-    NUnit
-    FakeItEasy
-    FluentAssertions
