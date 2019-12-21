@@ -12,5 +12,23 @@
         "type": "solution"
     },
     "sourceName": "Service.Template",
-    "preferNameDirectory": true
+    "preferNameDirectory": true,
+    "symbols": {
+        "Description": {
+            "type": "parameter",
+            "isRequired": true,
+            "replaces": "{{serviceDescription}}"
+        },
+        "Authors": {
+            "type": "parameter",
+            "isRequired": true,
+            "replaces": "{{serviceAuthors}}"
+        },
+        "Url": {
+            "type": "parameter",
+            "isRequired": false,
+            "replaces": "{{serviceUrl}}",
+            "defaultValue": "https://github.com/bltzkrgmchn/service.template"
+        }
+    }
 }

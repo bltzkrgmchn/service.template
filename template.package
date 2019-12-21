@@ -14,7 +14,7 @@
   </metadata>
   <files>
     <file src=".template.config/template.json" target="content/.template.config/" />
-    <file src="*.*" target="content/" />
+    <file src="*.*" exclude="template.package" target="content/" />
     <file src="Sources/**/*.*" exclude="**/bin/**/*.*;**/obj/**/*.*" target="content/" />
     <file src="Tests/**/*.*" exclude="**/bin/**/*.*;**/obj/**/*.*" target="content/" />
   </files>
