@@ -4,7 +4,7 @@
     "documentationRules": {
       "xmlHeader": false,
         "documentExposedElements": false,
-        "documentationCulture": "ru-RU"
+        "documentationCulture": "en-US"
     },
     "layoutRules": {
       "newlineAtEndOfFile": "omit"
