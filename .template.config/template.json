@@ -1,6 +1,6 @@
 {
     "$schema": "http://json.schemastore.org/template",
-    "author": "BalandinAI",
+    "author": "bltzkrgmchn",
     "classifications": [
         "WebAPI"
     ],
@@ -23,12 +23,6 @@
             "type": "parameter",
             "isRequired": true,
             "replaces": "{{serviceAuthors}}"
-        },
-        "Url": {
-            "type": "parameter",
-            "isRequired": false,
-            "replaces": "{{serviceUrl}}",
-            "defaultValue": "https://github.com/bltzkrgmchn/service.template"
         }
     }
 }

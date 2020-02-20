@@ -1,62 +1,118 @@
 #tool nuget:?package=NUnit.ConsoleRunner&version=3.10.0
 #addin nuget:?package=Cake.ExtendedNuGet&version=2.1.1
+#addin nuget:?package=Cake.FileHelpers&version=3.2.1
 
-var target = Argument("target", "Default");
-var configuration = Argument("configuration", "Release");
+var target = Argument ("target", "Default");
+var configuration = Argument ("configuration", "Release");
 
 var solution = "Service.Template.sln";
-
+var releaseNotesPath = "./RELEASE_NOTES.md";
 var binaries = "./Sources/Service.Template.Instance/bin";
 var objects = "./Sources/Service.Template.Instance/obj";
-var packages = "./artefacts/packages";
-var templateNuspec = "./template.package";
-var serviceNuspec = "./Sources/Service.Template.Instance/Service.Template.Instance.package";
+var packages = "./artifacts/packages";
+var nuspec = "./package.template";
 
-Task("Clean")
-    .Does(() =>
-{
-    CleanDirectories(new[] {packages, binaries, objects});
-});
+string version;
 
-Task("Restore")
-    .Does(() =>
-{
-    DotNetCoreRestore();
-});
+Task ("Clean")
+    .Does (() => {
+        CleanDirectories (new [] { packages, binaries, objects });
+        Information ($"Clean complete.");
+    });
 
-Task("Build")
-    .IsDependentOn("Clean")
-    .IsDependentOn("Restore")
-    .Does(() =>
-{
-		DotNetCoreBuild (solution, new DotNetCoreBuildSettings {
-			Configuration = configuration
-		});
-});
+Task ("Restore")
+    .Does (() => {
+        var restoreSettings = new DotNetCoreRestoreSettings {
+        PackagesDirectory = "./packages"
+        };
 
-Task("Tests")
-    .IsDependentOn("Build")
-    .Does(() =>
-{
-    NUnit3("./Tests/**/bin/" + configuration + "/*Tests.dll", new NUnit3Settings {
-        NoResults = true
+        DotNetCoreRestore (restoreSettings);
+        Information ($"Restore complete.");
+    });
+
+Task ("Version")
+    .Does (() => {
+        version = FileReadLines (releaseNotesPath).FirstOrDefault();
+        Information ($"Estimated version is '{version}'.");
+
+        var file = "./Sources/Service.Template.Instance/AssemlyInfo.cs";
+        CreateAssemblyInfo(file, new AssemblyInfoSettings {
+            Title = "Service.Template",
+            Version = version,
+            FileVersion = version,
+            InformationalVersion = version,
+            Copyright = $"Copyright (c) Aleksey Balandin 2019 - {DateTime.Now.Year}"
         });
-});
+    });
 
-Task("Package").IsDependentOn("Build").Does(() =>
-{
-    EnsureDirectoryExists(packages);
-    NuGetPack(serviceNuspec, new NuGetPackSettings{ OutputDirectory = packages });
-});
+Task ("Build")
+    .IsDependentOn ("Clean")
+    .IsDependentOn ("Restore")
+    .IsDependentOn ("Version")
+    .Does (() => {
+        DotNetCoreBuild (solution, new DotNetCoreBuildSettings {
+            Configuration = configuration,
+                NoRestore = true
+        });
+        Information ($"Build complete.");
+    });
 
-Task("Template").IsDependentOn("Build").Does(() =>
-{
-    EnsureDirectoryExists(packages);
-    NuGetPack(templateNuspec, new NuGetPackSettings{ OutputDirectory = packages });
-});
+Task ("Publish")
+    .IsDependentOn ("Build")
+    .IsDependentOn ("Version")
+    .Does (() => {
+        var settings = new DotNetCorePublishSettings
+        {
+            Framework = "netcoreapp2.2",
+            Configuration = "Release",
+            OutputDirectory = "./artifacts/publish",
+            NoBuild = true,
+            NoRestore = true,
+            Runtime = "win-x64"
+        };
 
-Task("Default")
-    .IsDependentOn("Tests")
-    .IsDependentOn("Package");
+        DotNetCorePublish("./Sources/Service.Template.Instance/Service.Template.Instance.csproj", settings);
+        Information ($"Publish complete.");
+    });
 
-RunTarget(target);
+Task ("Tests")
+    .IsDependentOn ("Publish")
+    .Does (() => {
+        var testProjects = GetFiles("./Tests/**/*.csproj");
+        Information ($"Found '{testProjects.Count}' test projects.");
+
+        var settings = new DotNetCoreTestSettings
+        {
+            NoBuild = true,
+            NoRestore = true,
+            Verbosity = DotNetCoreVerbosity.Normal,
+            Configuration = "Release"
+        };
+
+        foreach(var testProject in testProjects)
+        {
+            Information ($"Running test on '{testProject.FullPath}' project.");
+            DotNetCoreTest(testProject.FullPath, settings);
+        }
+
+        Information ($"Tests complete.");
+    });
+
+Task ("Package")
+    .IsDependentOn ("Publish")
+    .IsDependentOn ("Version")
+    .Does (() => {
+        EnsureDirectoryExists (packages);
+        NuGetPack (nuspec, new NuGetPackSettings {
+            OutputDirectory = packages,
+            Version = version,
+            ArgumentCustomization = args=>args.Append("-NoDefaultExcludes")
+            });
+        Information ($"Package complete.");
+    });
+
+Task ("Default")
+    .IsDependentOn ("Tests")
+    .IsDependentOn ("Package");
+
+RunTarget (target);

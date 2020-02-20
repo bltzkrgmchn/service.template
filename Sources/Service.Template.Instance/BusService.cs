@@ -5,7 +5,11 @@ using System.Threading.Tasks;
 
 namespace Service.Template.Instance
 {
-    /// <inheritdoc/>
+    /// <summary>
+    /// Сервис шины MassTransit.
+    /// Подробности использования интерфейса интерфейс <see cref="IHostedService"/> можно почитать здесь:
+    /// http://docs.microsoft.com/ru-ru/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2.
+    /// </summary>
     public class BusService : IHostedService
     {
         private readonly IBusControl busControl;
@@ -19,13 +23,19 @@ namespace Service.Template.Instance
             this.busControl = busControl;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Метод, выполняющийся во время запуска сервиса.
+        /// </summary>
+        /// <param name="cancellationToken">Токен отмены операции.</param>
         public Task StartAsync(CancellationToken cancellationToken)
         {
             return this.busControl.StartAsync(cancellationToken);
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Метод, выполняющийся во время остановки сервиса.
+        /// </summary>
+        /// <param name="cancellationToken">Токен отмены операции.</param>
         public Task StopAsync(CancellationToken cancellationToken)
         {
             return this.busControl.StopAsync(cancellationToken);

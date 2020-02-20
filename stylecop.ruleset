@@ -98,5 +98,6 @@
     <Rule Id="SA1600" Action="None" />
     <Rule Id="SA1609" Action="Warning" />
     <Rule Id="SA1633" Action="None" />
+    <Rule Id="SA0001" Action="None" />
   </Rules>
 </RuleSet>

@@ -3,23 +3,36 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp2.2</TargetFramework>
         <CodeAnalysisRuleSet>$(SolutionDir)\stylecop.ruleset</CodeAnalysisRuleSet>
+        <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
+        <RuntimeFrameworkVersion>2.2.8</RuntimeFrameworkVersion>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-      <DocumentationFile>.\Service.Template.Instance.xml</DocumentationFile>
+        <DocumentationFile>.\Service.Template.Instance.xml</DocumentationFile>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="MassTransit" Version="6.0.0" />
-        <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="6.0.0" />
+        <PackageReference Include="MassTransit" Version="5.5.6" />
+        <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="5.5.6" />
         <PackageReference Include="MassTransit.Extensions.Logging" Version="5.5.6" />
-        <PackageReference Include="MassTransit.RabbitMQ" Version="6.0.0" />
+        <PackageReference Include="MassTransit.SerilogIntegration" Version="5.5.6" />
+        <PackageReference Include="MassTransit.RabbitMQ" Version="5.5.6" />
         <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.HttpsPolicy" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
-        <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.0" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Hosting.WindowsServices" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+        <PackageReference Include="Serilog" Version="2.9.0" />
+        <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="4.0.0-dev-00834" />
+        <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
+        <PackageReference Include="Serilog.Enrichers.Environment" Version="2.1.3" />
+        <PackageReference Include="Serilog.Settings.Configuration" Version="3.1.1-dev-00216" />
+        <PackageReference Include="Serilog.Enrichers.Thread" Version="3.2.0-dev-00747" />
         <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
@@ -31,11 +44,8 @@
         <AdditionalFiles Include="$(SolutionDir)\stylecop.json" />
     </ItemGroup>
     <ItemGroup>
-      <Content Update="appsettings.Development.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
-      <Content Update="appsettings.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
+        <Content Update="appsettings.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 </Project>

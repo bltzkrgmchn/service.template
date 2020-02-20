@@ -4,9 +4,32 @@
         <name>Service.Template.Instance</name>
     </assembly>
     <members>
-        <member name="T:Service.Template.Instance.BusService">
-            <inheritdoc/>
+        <member name="T:Service.Template.Instance.BusConfiguration">
+            <summary>
+            Конфигурация шины.
+            </summary>
         </member>
+        <member name="P:Service.Template.Instance.BusConfiguration.ConnectionString">
+            <summary>
+            Получает или задает строку подключения.
+            </summary>
+        </member>
+        <member name="P:Service.Template.Instance.BusConfiguration.Username">
+            <summary>
+            Получает или задает имя пользователя.
+            </summary>
+        </member>
+        <member name="P:Service.Template.Instance.BusConfiguration.Password">
+            <summary>
+            Получает или задает пароль.
+            </summary>
+        </member>
+        <member name="P:Service.Template.Instance.BusConfiguration.PublisherConfirmation">
+            <summary>
+            Получает или задает значение, показывающее, флаг подтверждения получения сообщений.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Service.Template.Instance.BusService" -->
         <member name="M:Service.Template.Instance.BusService.#ctor(MassTransit.IBusControl)">
             <summary>
             Инициализирует новый экземпляр класса <see cref="T:Service.Template.Instance.BusService"/>.
@@ -14,10 +37,16 @@
             <param name="busControl">Контролер шины.</param>
         </member>
         <member name="M:Service.Template.Instance.BusService.StartAsync(System.Threading.CancellationToken)">
-            <inheritdoc/>
+            <summary>
+            Метод, выполняющийся во время запуска сервиса.
+            </summary>
+            <param name="cancellationToken">Токен отмены операции.</param>
         </member>
         <member name="M:Service.Template.Instance.BusService.StopAsync(System.Threading.CancellationToken)">
-            <inheritdoc/>
+            <summary>
+            Метод, выполняющийся во время остановки сервиса.
+            </summary>
+            <param name="cancellationToken">Токен отмены операции.</param>
         </member>
         <member name="T:Service.Template.Instance.Program">
             <summary>
@@ -30,13 +59,6 @@
             </summary>
             <param name="args">Аргументы запуска приложения.</param>
         </member>
-        <member name="M:Service.Template.Instance.Program.BuildWebHost(System.String[])">
-            <summary>
-            Построение хоста приложения.
-            </summary>
-            <param name="args">Аргументы запуска приложения.</param>
-            <returns>Хост приложения.</returns>
-        </member>
         <member name="T:Service.Template.Instance.Startup">
             <summary>
             Инициализация приложения.
@@ -46,7 +68,6 @@
             <summary>
             Инициализирует новый экземпляр класса <see cref="T:Service.Template.Instance.Startup"/>.
             </summary>
-            <param name="environment">Окружение приложения.</param>
         </member>
         <member name="M:Service.Template.Instance.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
             <summary>

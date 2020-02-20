@@ -3090,13 +3090,18 @@
             AzurePipelinesHosted build provider.
             </summary>
         </member>
+        <member name="F:Cake.Common.Build.BuildProvider.GitHubActions">
+            <summary>
+            GitHubActions build provider.
+            </summary>
+        </member>
         <member name="T:Cake.Common.Build.BuildSystem">
             <summary>
             Provides functionality for interacting with
             different build systems.
             </summary>
         </member>
-        <member name="M:Cake.Common.Build.BuildSystem.#ctor(Cake.Common.Build.AppVeyor.IAppVeyorProvider,Cake.Common.Build.TeamCity.ITeamCityProvider,Cake.Common.Build.MyGet.IMyGetProvider,Cake.Common.Build.Bamboo.IBambooProvider,Cake.Common.Build.ContinuaCI.IContinuaCIProvider,Cake.Common.Build.Jenkins.IJenkinsProvider,Cake.Common.Build.Bitrise.IBitriseProvider,Cake.Common.Build.TravisCI.ITravisCIProvider,Cake.Common.Build.BitbucketPipelines.IBitbucketPipelinesProvider,Cake.Common.Build.GoCD.IGoCDProvider,Cake.Common.Build.GitLabCI.IGitLabCIProvider,Cake.Common.Build.TFBuild.ITFBuildProvider)">
+        <member name="M:Cake.Common.Build.BuildSystem.#ctor(Cake.Common.Build.AppVeyor.IAppVeyorProvider,Cake.Common.Build.TeamCity.ITeamCityProvider,Cake.Common.Build.MyGet.IMyGetProvider,Cake.Common.Build.Bamboo.IBambooProvider,Cake.Common.Build.ContinuaCI.IContinuaCIProvider,Cake.Common.Build.Jenkins.IJenkinsProvider,Cake.Common.Build.Bitrise.IBitriseProvider,Cake.Common.Build.TravisCI.ITravisCIProvider,Cake.Common.Build.BitbucketPipelines.IBitbucketPipelinesProvider,Cake.Common.Build.GoCD.IGoCDProvider,Cake.Common.Build.GitLabCI.IGitLabCIProvider,Cake.Common.Build.TFBuild.ITFBuildProvider,Cake.Common.Build.GitHubActions.IGitHubActionsProvider)">
             <summary>
             Initializes a new instance of the <see cref="T:Cake.Common.Build.BuildSystem" /> class.
             </summary>
@@ -3110,8 +3115,9 @@
             <param name="travisCIProvider">The Travis CI provider.</param>
             <param name="bitbucketPipelinesProvider">The Bitbucket Pipelines provider.</param>
             <param name="goCDProvider">The Go.CD provider.</param>
-            <param name="gitlabCIProvider">The GitLab CI provider.</param>
+            <param name="gitLabCIProvider">The GitLab CI provider.</param>
             <param name="tfBuildProvider">The TF Build provider.</param>
+            <param name="gitHubActionsProvider">The GitHub Actions provider.</param>
         </member>
         <member name="P:Cake.Common.Build.BuildSystem.IsRunningOnAppVeyor">
             <summary>
@@ -3119,7 +3125,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnAppVeyor)
+            if (BuildSystem.IsRunningOnAppVeyor)
             {
                 // Upload artifact to AppVeyor.
                 AppVeyor.UploadArtifact("./build/release_x86.zip");
@@ -3136,7 +3142,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnAppVeyor)
+            if (BuildSystem.IsRunningOnAppVeyor)
             {
                 // Upload artifact to AppVeyor.
                 BuildSystem.AppVeyor.UploadArtifact("./build/release_x86.zip");
@@ -3150,7 +3156,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnTeamCity)
+            if (BuildSystem.IsRunningOnTeamCity)
             {
                 TeamCity.ProgressMessage("Doing an action...");
                 // Do action...
@@ -3167,7 +3173,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnTeamCity)
+            if (BuildSystem.IsRunningOnTeamCity)
             {
                 // Set the build number.
                 BuildSystem.TeamCity.SetBuildNumber("1.2.3.4");
@@ -3181,7 +3187,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnMyGet)
+            if (BuildSystem.IsRunningOnMyGet)
             {
                 MyGet.BuildProblem("Something went wrong...");
                 // Do action...
@@ -3198,7 +3204,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnMyGet)
+            if (BuildSystem.IsRunningOnMyGet)
             {
                 // Set the build number.
                 BuildSystem.MyGet.SetBuildNumber("1.2.3.4");
@@ -3212,7 +3218,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnBamboo)
+            if (BuildSystem.IsRunningOnBamboo)
             {
                 // Get the build number.
                 var buildNumber = BuildSystem.Bamboo.Number;
@@ -3229,7 +3235,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnBamboo)
+            if (BuildSystem.IsRunningOnBamboo)
             {
                 //Get the Bamboo Plan Name
                 var planName = BuildSystem.Bamboo.Project.PlanName
@@ -3243,7 +3249,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnContinuaCI)
+            if (BuildSystem.IsRunningOnContinuaCI)
             {
                 // Get the build version.
                 var buildVersion = BuildSystem.ContinuaCI.Environment.Build.Version;
@@ -3260,7 +3266,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnContinuaCI)
+            if (BuildSystem.IsRunningOnContinuaCI)
             {
                 //Get the Continua CI Project Name
                 var projectName = BuildSystem.ContinuaCI.Environment.Project.Name;
@@ -3274,7 +3280,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnJenkins)
+            if (BuildSystem.IsRunningOnJenkins)
             {
                 // Get the build number.
                 var buildNumber = BuildSystem.Jenkins.Environment.Build.BuildNumber;
@@ -3294,7 +3300,7 @@
             </value>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnJenkins)
+            if (BuildSystem.IsRunningOnJenkins)
             {
                 // Get the job name.
                 var jobName = BuildSystem.Jenkins.Environment.Build.JobName;
@@ -3308,7 +3314,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnBitrise)
+            if (BuildSystem.IsRunningOnBitrise)
             {
                 // Get the build number.
                 var buildNumber = BuildSystem.Bitrise.Environment.Build.BuildNumber;
@@ -3325,7 +3331,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnBitrise)
+            if (BuildSystem.IsRunningOnBitrise)
             {
                 // Get the provision profile url.
                 var buildNumber = BuildSystem.Bitrise.Environment.Provisioning.ProvisionUrl;
@@ -3339,7 +3345,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnTravisCI)
+            if (BuildSystem.IsRunningOnTravisCI)
             {
                 // Get the build directory.
                 var buildDirectory = BuildSystem.TravisCI.Environment.Build.BuildDirectory;
@@ -3356,7 +3362,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnTravisCI)
+            if (BuildSystem.IsRunningOnTravisCI)
             {
                 // Get the operating system name.
                 var osName = BuildSystem.TravisCI.Environment.Job.OSName;
@@ -3373,7 +3379,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnBitbucketPipelines)
+            if (BuildSystem.IsRunningOnBitbucketPipelines)
             {
                 // Get the build commit hash.
                 var commitHash = BuildSystem.BitbucketPipelines.Environment.Repository.Commit;
@@ -3390,7 +3396,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnBitbucketPipelines)
+            if (BuildSystem.IsRunningOnBitbucketPipelines)
             {
                 // Get the URL friendly repo name.
                 var repoSlug = BuildSystem.BitbucketPipelines.Environment.Repository.RepoSlug;
@@ -3404,7 +3410,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnGoCD)
+            if (BuildSystem.IsRunningOnGoCD)
             {
                 // Get the build counter.
                 var counter = BuildSystem.GoCD.Environment.Pipeline.Counter;
@@ -3421,7 +3427,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnGoCD)
+            if (BuildSystem.IsRunningOnGoCD)
             {
                 // Get the pipeline counter.
                 var counter = BuildSystem.GoCD.Environment.Environment.Pipeline.Counter;
@@ -3435,7 +3441,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnGitLabCI)
+            if (BuildSystem.IsRunningOnGitLabCI)
             {
                 // Get the build commit hash.
                 var commitHash = BuildSystem.GitLabCI.Environment.Build.Reference;
@@ -3449,7 +3455,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnGitLabCI)
+            if (BuildSystem.IsRunningOnGitLabCI)
             {
                 // Get the build commit hash.
                 var commitHash = BuildSystem.GitLabCI.Environment.Build.Reference;
@@ -3466,7 +3472,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnTFS)
+            if (BuildSystem.IsRunningOnTFS)
             {
                 // Get the build commit hash.
                 var commitHash = BuildSystem.TFBuild.Environment.Repository.SourceVersion;
@@ -3483,7 +3489,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnVSTS)
+            if (BuildSystem.IsRunningOnVSTS)
             {
                 // Get the build commit hash.
                 var commitHash = BuildSystem.TFBuild.Environment.Repository.SourceVersion;
@@ -3500,7 +3506,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnAzurePipelines)
+            if (BuildSystem.IsRunningOnAzurePipelines)
             {
                 // Get the build commit hash.
                 var commitHash = BuildSystem.TFBuild.Environment.Repository.SourceVersion;
@@ -3517,7 +3523,7 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnAzurePipelinesHosted)
+            if (BuildSystem.IsRunningOnAzurePipelinesHosted)
             {
                 // Get the build commit hash.
                 var commitHash = BuildSystem.TFBuild.Environment.Repository.SourceVersion;
@@ -3534,10 +3540,41 @@
             </summary>
             <example>
             <code>
-            if(BuildSystem.IsRunningOnVSTS)
+            if (BuildSystem.IsRunningOnVSTS)
             {
                 // Get the build definition name.
                 var definitionName = BuildSystem.TFBuild.Environment.BuildDefinition.Name;
+            }
+            </code>
+            </example>
+        </member>
+        <member name="P:Cake.Common.Build.BuildSystem.IsRunningOnGitHubActions">
+            <summary>
+            Gets a value indicating whether this instance is running on GitHub Actions.
+            </summary>
+            <example>
+            <code>
+            if (BuildSystem.IsRunningOnGitHubActions)
+            {
+                // Get the workflow name.
+                var workflow = BuildSystem.GitHubActions.Environment.Workflow.Workflow;
+            }
+            </code>
+            </example>
+            <value>
+            <c>true</c> if this instance is running on GitHub Actions; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Cake.Common.Build.BuildSystem.GitHubActions">
+            <summary>
+            Gets the GitHub Actions Provider.
+            </summary>
+            <example>
+            <code>
+            if (BuildSystem.IsRunningOnGitHubActions)
+            {
+                // Get the workflow name.
+                var workflow = BuildSystem.GitHubActions.Environment.Workflow.Workflow;
             }
             </code>
             </example>
@@ -3750,6 +3787,19 @@
             </example>
             <param name="context">The context.</param>
             <returns>A <see cref="N:Cake.Common.Build.TFBuild"/> instance.</returns>
+        </member>
+        <member name="M:Cake.Common.Build.BuildSystemAliases.GitHubActions(Cake.Core.ICakeContext)">
+            <summary>
+            Gets a <see cref="T:Cake.Common.Build.GitHubActions.GitHubActionsProvider"/> instance that can be used to
+            obtain information from the GitHub Actions environment.
+            </summary>
+            <example>
+            <code>
+            var isGitHubActionsBuild = GitHubActions.IsRunningOnGitHubActions;
+            </code>
+            </example>
+            <param name="context">The context.</param>
+            <returns>A <see cref="N:Cake.Common.Build.GitHubActions"/> instance.</returns>
         </member>
         <member name="T:Cake.Common.Build.ContinuaCI.ContinuaCIInfo">
             <summary>
@@ -4476,6 +4526,340 @@
             The Continua CI environment.
             </value>
         </member>
+        <member name="T:Cake.Common.Build.GitHubActions.Data.GitHubActionsEnvironmentInfo">
+            <summary>
+            Provides GitHub Actions environment information for a current build.
+            </summary>
+        </member>
+        <member name="M:Cake.Common.Build.GitHubActions.Data.GitHubActionsEnvironmentInfo.#ctor(Cake.Core.ICakeEnvironment)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.Common.Build.GitHubActions.Data.GitHubActionsEnvironmentInfo"/> class.
+            </summary>
+            <param name="environment">The environment.</param>
+        </member>
+        <member name="P:Cake.Common.Build.GitHubActions.Data.GitHubActionsEnvironmentInfo.Home">
+            <summary>
+            Gets the GitHub Actions home directory.
+            </summary>
+            <value>
+            The home.
+            </value>
+            <para>Via BuildSystem</para>
+            <example>
+            <code>
+            if (BuildSystem.GitHubActions.IsRunningOnGitHubActions)
+            {
+                Information(
+                    @"Home: {0}",
+                    BuildSystem.GitHubActions.Environment.Home
+                    );
+            }
+            else
+            {
+                Information("Not running on GitHubActions");
+            }
+            </code>
+            </example>
+            <para>Via GitHubActions</para>
+            <example>
+            <code>
+            if (GitHubActions.IsRunningOnGitHubActions)
+            {
+                Information(
+                    @"Home: {0}",
+                    GitHubActions.Environment.Home
+                    );
+            }
+            else
+            {
+                Information("Not running on GitHubActions");
+            }
+            </code>
+            </example>
+        </member>
+        <member name="P:Cake.Common.Build.GitHubActions.Data.GitHubActionsEnvironmentInfo.Workflow">
+            <summary>
+            Gets the GitHub Actions workflow information.
+            </summary>
+            <value>
+            The GitHub Actions workflow information.
+            </value>
+            <para>Via BuildSystem</para>
+            <example>
+            <code>
+            if (BuildSystem.GitHubActions.IsRunningOnGitHubActions)
+            {
+                Information(
+                    @"Workflow:
+                    Workflow: {0}
+                    Action: {1}
+                    Actor: {2}",
+                    BuildSystem.GitHubActions.Environment.Workflow.Workflow,
+                    BuildSystem.GitHubActions.Environment.Workflow.Action,
+                    BuildSystem.GitHubActions.Environment.Workflow.Actor
+                    );
+            }
+            else
+            {
+                Information("Not running on GitHubActions");
+            }
+            </code>
+            </example>
+            <para>Via GitHubActions</para>
+            <example>
+            <code>
+                Information(
+                    @"Workflow:
+                    Workflow: {0}
+                    Action: {1}
+                    Actor: {2}",
+                    GitHubActions.Environment.Workflow.Workflow,
+                    GitHubActions.Environment.Workflow.Action,
+                    GitHubActions.Environment.Workflow.Actor
+                    );
+            </code>
+            </example>
+        </member>
+        <member name="P:Cake.Common.Build.GitHubActions.Data.GitHubActionsEnvironmentInfo.PullRequest">
+            <summary>
+            Gets GitHub Actions pull request information.
+            </summary>
+            <value>
+            The GitHub Actions pull request information.
+            </value>
+            <para>Via BuildSystem</para>
+            <example>
+            <code>
+            if (BuildSystem.GitHubActions.IsRunningOnGitHubActions)
+            {
+                Information(
+                    @"PullRequest:
+                    IsPullRequest: {0}",
+                    BuildSystem.GitHubActions.Environment.PullRequest.IsPullRequest
+                    );
+            }
+            else
+            {
+                Information("Not running on GitHubActions");
+            }
+            </code>
+            </example>
+            <para>Via GitHubActions</para>
+            <example>
+            <code>
+            if (GitHubActions.IsRunningOnGitHubActions)
+            {
+                Information(
+                    @"PullRequest:
+                    IsPullRequest: {0}",
+                    GitHubActions.Environment.PullRequest.IsPullRequest
+                    );
+            }
+            else
+            {
+                Information("Not running on GitHubActions");
+            }
+            </code>
+            </example>
+        </member>
+        <member name="T:Cake.Common.Build.GitHubActions.Data.GitHubActionsPullRequestInfo">
+            <summary>
+            Provides GitHub Actions pull request information for the current build.
+            </summary>
+        </member>
+        <member name="M:Cake.Common.Build.GitHubActions.Data.GitHubActionsPullRequestInfo.#ctor(Cake.Core.ICakeEnvironment)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.Common.Build.GitHubActions.Data.GitHubActionsPullRequestInfo"/> class.
+            </summary>
+            <param name="environment">The environment.</param>
+        </member>
+        <member name="P:Cake.Common.Build.GitHubActions.Data.GitHubActionsPullRequestInfo.IsPullRequest">
+            <summary>
+            Gets a value indicating whether the current build was started by a pull request.
+            </summary>
+            <value>
+              <c>true</c> if the current build was started by a pull request; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Cake.Common.Build.GitHubActions.Data.GitHubActionsWorkflowInfo">
+            <summary>
+            Provide GitHub Actions workflow information for a current build
+            </summary>
+        </member>
+        <member name="M:Cake.Common.Build.GitHubActions.Data.GitHubActionsWorkflowInfo.#ctor(Cake.Core.ICakeEnvironment)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.Common.Build.GitHubActions.Data.GitHubActionsWorkflowInfo"/> class.
+            </summary>
+            <param name="environment">The environment.</param>
+        </member>
+        <member name="P:Cake.Common.Build.GitHubActions.Data.GitHubActionsWorkflowInfo.Action">
+            <summary>
+            Gets the unique identifier of the action.
+            </summary>
+            <value>
+            The unique identifier of the action.
+            </value>
+        </member>
+        <member name="P:Cake.Common.Build.GitHubActions.Data.GitHubActionsWorkflowInfo.Actor">
+            <summary>
+            Gets the name of the person or app that initiated the workflow.
+            </summary>
+            <value>
+            The name of the person or app that initiated the workflow.
+            </value>
+        </member>
+        <member name="P:Cake.Common.Build.GitHubActions.Data.GitHubActionsWorkflowInfo.BaseRef">
+            <summary>
+            Gets the branch of the base repository.
+            </summary>
+            <value>
+            The branch of the base repository. Only set for forked repositories.
+            </value>
+        </member>
+        <member name="P:Cake.Common.Build.GitHubActions.Data.GitHubActionsWorkflowInfo.EventName">
+            <summary>
+            Gets the name of the webhook event that triggered the workflow.
+            </summary>
+            <value>
+            The name of the webhook event that triggered the workflow.
+            </value>
+        </member>
+        <member name="P:Cake.Common.Build.GitHubActions.Data.GitHubActionsWorkflowInfo.EventPath">
+            <summary>
+            Gets the path of the file with the complete webhook event payload.
+            </summary>
+            <value>
+            The path of the file with the complete webhook event payload.
+            </value>
+        </member>
+        <member name="P:Cake.Common.Build.GitHubActions.Data.GitHubActionsWorkflowInfo.HeadRef">
+            <summary>
+            Gets the branch of the head repository.
+            </summary>
+            <value>
+            The branch of the head repository. Only set for forked repositories.
+            </value>
+        </member>
+        <member name="P:Cake.Common.Build.GitHubActions.Data.GitHubActionsWorkflowInfo.Ref">
+            <summary>
+            Gets the branch or tag ref that triggered the workflow.
+            </summary>
+            <value>
+            The branch or tag ref that triggered the workflow.
+            </value>
+        </member>
+        <member name="P:Cake.Common.Build.GitHubActions.Data.GitHubActionsWorkflowInfo.Repository">
+            <summary>
+            Gets the owner and repository name.
+            </summary>
+            <value>
+            The owner and repository name.
+            </value>
+        </member>
+        <member name="P:Cake.Common.Build.GitHubActions.Data.GitHubActionsWorkflowInfo.Sha">
+            <summary>
+            Gets the commit SHA that triggered the workflow.
+            </summary>
+            <value>
+            The commit SHA that triggered the workflow.
+            </value>
+        </member>
+        <member name="P:Cake.Common.Build.GitHubActions.Data.GitHubActionsWorkflowInfo.Workflow">
+            <summary>
+            Gets the name of the workflow.
+            </summary>
+            <value>
+            The name of the workflow.
+            </value>
+        </member>
+        <member name="P:Cake.Common.Build.GitHubActions.Data.GitHubActionsWorkflowInfo.Workspace">
+            <summary>
+            Gets the GitHub workspace directory path.
+            </summary>
+            <value>
+            The GitHub workspace directory path.
+            </value>
+        </member>
+        <member name="T:Cake.Common.Build.GitHubActions.GitHubActionsInfo">
+            <summary>
+            Base class used to provide information about the GitHub Actions environment.
+            </summary>
+        </member>
+        <member name="M:Cake.Common.Build.GitHubActions.GitHubActionsInfo.#ctor(Cake.Core.ICakeEnvironment)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.Common.Build.GitHubActions.GitHubActionsInfo"/> class.
+            </summary>
+            <param name="environment">The environment.</param>
+        </member>
+        <member name="M:Cake.Common.Build.GitHubActions.GitHubActionsInfo.GetEnvironmentString(System.String)">
+            <summary>
+            Gets an environment variable as a <see cref="T:System.String"/>.
+            </summary>
+            <param name="variable">The environment variable name.</param>
+            <returns>The environment variable.</returns>
+        </member>
+        <member name="M:Cake.Common.Build.GitHubActions.GitHubActionsInfo.GetEnvironmentInteger(System.String)">
+            <summary>
+            Gets an environment variable as a <see cref="T:System.Int32"/>.
+            </summary>
+            <param name="variable">The environment variable name.</param>
+            <returns>The environment variable.</returns>
+        </member>
+        <member name="M:Cake.Common.Build.GitHubActions.GitHubActionsInfo.GetEnvironmentBoolean(System.String)">
+            <summary>
+            Gets an environment variable as a <see cref="T:System.Boolean"/>.
+            </summary>
+            <param name="variable">The environment variable name.</param>
+            <returns>The environment variable.</returns>
+        </member>
+        <member name="T:Cake.Common.Build.GitHubActions.GitHubActionsProvider">
+            <summary>
+            Responsible for communicating with GitHub Actions.
+            </summary>
+        </member>
+        <member name="M:Cake.Common.Build.GitHubActions.GitHubActionsProvider.#ctor(Cake.Core.ICakeEnvironment)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.Common.Build.GitHubActions.GitHubActionsProvider"/> class.
+            </summary>
+            <param name="environment">The environment.</param>
+        </member>
+        <member name="P:Cake.Common.Build.GitHubActions.GitHubActionsProvider.IsRunningOnGitHubActions">
+            <summary>
+            Gets a value indicating whether the current build is running on GitHub Actions.
+            </summary>
+            <value>
+            <c>true</c> if the current build is running on GitHub Actions; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Cake.Common.Build.GitHubActions.GitHubActionsProvider.Environment">
+            <summary>
+            Gets the GitHub Actions environment.
+            </summary>
+            <value>
+            The GitHub Actions environment.
+            </value>
+        </member>
+        <member name="T:Cake.Common.Build.GitHubActions.IGitHubActionsProvider">
+            <summary>
+            Represents a GitHub Actions provider.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Build.GitHubActions.IGitHubActionsProvider.IsRunningOnGitHubActions">
+            <summary>
+            Gets a value indicating whether the current build is running on GitHub Actions.
+            </summary>
+            <value>
+            <c>true</c> if the current build is running on GitHub Actions; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Cake.Common.Build.GitHubActions.IGitHubActionsProvider.Environment">
+            <summary>
+            Gets the GitHub Actions environment.
+            </summary>
+            <value>
+            The GitHub Actions environment.
+            </value>
+        </member>
         <member name="T:Cake.Common.Build.GitLabCI.Data.GitLabCIBuildInfo">
             <summary>
             Provide GitLab CI build information for a current build
@@ -5097,20 +5481,20 @@
             </summary>
             <param name="environment">The environment.</param>
         </member>
-        <member name="P:Cake.Common.Build.GitLabCI.GitLabCIProvider.Environment">
-            <summary>
-            Gets the GitLab CI environment.
-            </summary>
-            <value>
-            The GitLab CI environment.
-            </value>
-        </member>
         <member name="P:Cake.Common.Build.GitLabCI.GitLabCIProvider.IsRunningOnGitLabCI">
             <summary>
             Gets a value indicating whether the current build is running on GitLab CI.
             </summary>
             <value>
             <c>true</c> if the current build is running on GitLab CI; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Cake.Common.Build.GitLabCI.GitLabCIProvider.Environment">
+            <summary>
+            Gets the GitLab CI environment.
+            </summary>
+            <value>
+            The GitLab CI environment.
             </value>
         </member>
         <member name="T:Cake.Common.Build.GitLabCI.IGitLabCIProvider">
@@ -6848,6 +7232,14 @@
             Represents a TeamCity provider.
             </summary>
         </member>
+        <member name="P:Cake.Common.Build.TeamCity.ITeamCityProvider.IsRunningOnTeamCity">
+            <summary>
+            Gets a value indicating whether the current build is running on TeamCity.
+            </summary>
+            <value>
+            <c>true</c> if the current build is running on TeamCity; otherwise, <c>false</c>.
+            </value>
+        </member>
         <member name="P:Cake.Common.Build.TeamCity.ITeamCityProvider.Environment">
             <summary>
             Gets the TeamCity environment.
@@ -6918,14 +7310,6 @@
             </summary>
             <param name="snapshotFile">Snapshot file path.</param>
             <param name="dotCoverHome">The full path to the dotCover home folder to override the bundled dotCover.</param>
-        </member>
-        <member name="P:Cake.Common.Build.TeamCity.ITeamCityProvider.IsRunningOnTeamCity">
-            <summary>
-            Gets a value indicating whether the current build is running on TeamCity.
-            </summary>
-            <value>
-            <c>true</c> if the current build is running on TeamCity; otherwise, <c>false</c>.
-            </value>
         </member>
         <member name="M:Cake.Common.Build.TeamCity.ITeamCityProvider.PublishArtifacts(System.String)">
             <summary>
@@ -7054,6 +7438,14 @@
             Responsible for communicating with TeamCity.
             </summary>
         </member>
+        <member name="P:Cake.Common.Build.TeamCity.TeamCityProvider.IsRunningOnTeamCity">
+            <summary>
+            Gets a value indicating whether the current build is running on TeamCity.
+            </summary>
+            <value>
+            <c>true</c> if the current build is running on TeamCity; otherwise, <c>false</c>.
+            </value>
+        </member>
         <member name="P:Cake.Common.Build.TeamCity.TeamCityProvider.Environment">
             <summary>
             Gets the TeamCity environment.
@@ -7110,14 +7502,6 @@
             </summary>
             <param name="environment">The cake environment.</param>
             <param name="log">The cake log.</param>
-        </member>
-        <member name="P:Cake.Common.Build.TeamCity.TeamCityProvider.IsRunningOnTeamCity">
-            <summary>
-            Gets a value indicating whether the current build is running on TeamCity.
-            </summary>
-            <value>
-            <c>true</c> if the current build is running on TeamCity; otherwise, <c>false</c>.
-            </value>
         </member>
         <member name="M:Cake.Common.Build.TeamCity.TeamCityProvider.WriteProgressMessage(System.String)">
             <summary>
@@ -7945,18 +8329,20 @@
         </member>
         <member name="P:Cake.Common.Build.TFBuild.Data.TFBuildPullRequestInfo.Id">
             <summary>
-            Gets the pull request id.
+            Gets the ID of the pull request that caused this build.
+            This value is set only if the build ran because of a Git PR affected by a branch policy.
             </summary>
             <value>
-              The pull request id.
+              The ID of the pull request that caused this build.
             </value>
         </member>
         <member name="P:Cake.Common.Build.TFBuild.Data.TFBuildPullRequestInfo.Number">
             <summary>
-            Gets the GitHub pull request number.
+            Gets the number of the pull request that caused this build.
+            This value is set for pull requests from GitHub which have a different pull request ID and pull request number.
             </summary>
             <value>
-              The GitHub pull request number.
+              The number of the pull request that caused this build.
             </value>
         </member>
         <member name="P:Cake.Common.Build.TFBuild.Data.TFBuildPullRequestInfo.SourceBranch">
@@ -8053,6 +8439,14 @@
             </summary>
             <value>
             The full SCM branch
+            </value>
+        </member>
+        <member name="P:Cake.Common.Build.TFBuild.Data.TFBuildRepositoryInfo.SourceBranchName">
+            <summary>
+            Gets name of the branch the build was queued for.
+            </summary>
+            <value>
+            The SCM branch name
             </value>
         </member>
         <member name="P:Cake.Common.Build.TFBuild.Data.TFBuildRepositoryInfo.Branch">
@@ -9494,20 +9888,20 @@
             <param name="environment">The environment.</param>
             <param name="log">The log.</param>
         </member>
-        <member name="P:Cake.Common.Build.TravisCI.TravisCIProvider.Environment">
-            <summary>
-            Gets the Travis CI environment.
-            </summary>
-            <value>
-            The environment.
-            </value>
-        </member>
         <member name="P:Cake.Common.Build.TravisCI.TravisCIProvider.IsRunningOnTravisCI">
             <summary>
             Gets a value indicating whether this instance is running on Travis CI.
             </summary>
             <value>
             <c>true</c> if this instance is running on Travis CI; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Cake.Common.Build.TravisCI.TravisCIProvider.Environment">
+            <summary>
+            Gets the Travis CI environment.
+            </summary>
+            <value>
+            The environment.
             </value>
         </member>
         <member name="M:Cake.Common.Build.TravisCI.TravisCIProvider.WriteStartFold(System.String)">
@@ -11642,6 +12036,14 @@
             Gets or sets the value.
             </summary>
             <value>The value for the attribute.</value>
+        </member>
+        <member name="P:Cake.Common.Solution.Project.Properties.AssemblyInfoCustomAttribute.UseRawValue">
+            <summary>
+            Gets or sets a value indicating whether the value is raw or should be quoted in the created attribute.
+            </summary>
+            <value>
+              <c>true</c> if should be treated as raw; otherwise, <c>false</c>.
+            </value>
         </member>
         <member name="T:Cake.Common.Solution.Project.Properties.AssemblyInfoMetadataAttribute">
             <summary>
@@ -14193,6 +14595,17 @@
             This setting requires NuGet V3 or later.
             </summary>
             <value>The list of packages sources to use as fallbacks for this command.</value>
+        </member>
+        <member name="P:Cake.Common.Tools.NuGet.Install.NuGetInstallSettings.NonInteractive">
+            <summary>
+            Gets or sets a value indicating whether or not NuGet suppresses prompts for user input or confirmations.
+            </summary>
+            <remarks>
+            This setting is passed by NuGet.exe to any extensions such as authorization providers
+            </remarks>
+            <value>
+            <c>false</c> to allow NuGet to show prompts for user input or confirmations; otherwise, <c>true</c>.
+            </value>
         </member>
         <member name="T:Cake.Common.Tools.NuGet.Pack.NamespaceDoc">
             <summary>
@@ -25101,6 +25514,47 @@
             Requires .NET Core 2.x or newer.
             </remarks>
         </member>
+        <member name="P:Cake.Common.Tools.DotNetCore.Publish.DotNetCorePublishSettings.PublishSingleFile">
+            <summary>
+            Gets or sets a value indicating whether to package your app into a platform-specific single-file executable
+            </summary>
+            <remarks>
+            Requires .NET Core 3.x or newer.
+            </remarks>
+        </member>
+        <member name="P:Cake.Common.Tools.DotNetCore.Publish.DotNetCorePublishSettings.PublishTrimmed">
+            <summary>
+            Gets or sets a value indicating whether to reduce the size of apps by analyzing IL and trimming unused assemblies
+            </summary>
+            <remarks>
+            Requires .NET Core 3.x or newer.
+            </remarks>
+        </member>
+        <member name="P:Cake.Common.Tools.DotNetCore.Publish.DotNetCorePublishSettings.TieredCompilationQuickJit">
+            <summary>
+            Gets or sets a value as to whether tiered compilation quick JIT is enabled
+            </summary>
+            <remarks>
+            Requires .NET Core 3.x or newer. Tiered compilation is enabled by default in .NET Core 3
+            <para>Code generated by Quick JIT may run slower, allocate more memory, or use more stack space</para>
+            </remarks>
+        </member>
+        <member name="P:Cake.Common.Tools.DotNetCore.Publish.DotNetCorePublishSettings.TieredCompilation">
+            <summary>
+            Gets or sets a value indicating whether tiered compilation is enabled
+            </summary>
+            <remarks>
+            Requires .NET Core 3.x or newer. Tiered compilation is enabled by default in .NET Core 3
+            </remarks>
+        </member>
+        <member name="P:Cake.Common.Tools.DotNetCore.Publish.DotNetCorePublishSettings.PublishReadyToRun">
+            <summary>
+            Gets or sets a value indicating whether to compile your application assemblies as ReadyToRun (R2R) format
+            </summary>
+            <remarks>
+            Requires .NET Core 3.x or newer. Tiered compilation is enabled by default in .NET Core 3
+            </remarks>
+        </member>
         <member name="P:Cake.Common.Tools.DotNetCore.Publish.DotNetCorePublishSettings.Sources">
             <summary>
             Gets or sets the specified NuGet package sources to use during the restore.
@@ -26279,16 +26733,6 @@
             Contains settings used by <see cref="T:Cake.Common.Tools.GitReleaseManager.AddAssets.GitReleaseManagerAssetsAdder"/>.
             </summary>
         </member>
-        <member name="P:Cake.Common.Tools.GitReleaseManager.AddAssets.GitReleaseManagerAddAssetsSettings.TargetDirectory">
-            <summary>
-            Gets or sets the path on which GitReleaseManager should be executed.
-            </summary>
-        </member>
-        <member name="P:Cake.Common.Tools.GitReleaseManager.AddAssets.GitReleaseManagerAddAssetsSettings.LogFilePath">
-            <summary>
-            Gets or sets the path to the GitReleaseManager log file.
-            </summary>
-        </member>
         <member name="T:Cake.Common.Tools.GitReleaseManager.AddAssets.GitReleaseManagerAssetsAdder">
             <summary>
             The GitReleaseManager Asset Adder used to add assets to a release.
@@ -26331,16 +26775,6 @@
             Contains settings used by <see cref="T:Cake.Common.Tools.GitReleaseManager.Close.GitReleaseManagerMilestoneCloser"/>.
             </summary>
         </member>
-        <member name="P:Cake.Common.Tools.GitReleaseManager.Close.GitReleaseManagerCloseMilestoneSettings.TargetDirectory">
-            <summary>
-            Gets or sets the path on which GitReleaseManager should be executed.
-            </summary>
-        </member>
-        <member name="P:Cake.Common.Tools.GitReleaseManager.Close.GitReleaseManagerCloseMilestoneSettings.LogFilePath">
-            <summary>
-            Gets or sets the path to the GitReleaseManager log file.
-            </summary>
-        </member>
         <member name="T:Cake.Common.Tools.GitReleaseManager.Close.GitReleaseManagerMilestoneCloser">
             <summary>
             The GitReleaseManager Milestone Closer used to close milestones.
@@ -26357,7 +26791,7 @@
         </member>
         <member name="M:Cake.Common.Tools.GitReleaseManager.Close.GitReleaseManagerMilestoneCloser.Close(System.String,System.String,System.String,System.String,System.String,Cake.Common.Tools.GitReleaseManager.Close.GitReleaseManagerCloseMilestoneSettings)">
             <summary>
-            Creates a Release using the specified settings.
+            Closes a milestone using the specified settings.
             </summary>
             <param name="userName">The user name.</param>
             <param name="password">The password.</param>
@@ -26368,7 +26802,7 @@
         </member>
         <member name="M:Cake.Common.Tools.GitReleaseManager.Close.GitReleaseManagerMilestoneCloser.Close(System.String,System.String,System.String,System.String,Cake.Common.Tools.GitReleaseManager.Close.GitReleaseManagerCloseMilestoneSettings)">
             <summary>
-            Creates a Release using the specified settings.
+            Closes a milestone using the specified settings.
             </summary>
             <param name="token">The token.</param>
             <param name="owner">The owner.</param>
@@ -26411,16 +26845,6 @@
             Gets or sets the commit to tag. Can be a branch or SHA. Defaults to repository's default branch..
             </summary>
         </member>
-        <member name="P:Cake.Common.Tools.GitReleaseManager.Create.GitReleaseManagerCreateSettings.TargetDirectory">
-            <summary>
-            Gets or sets the path on which GitReleaseManager should be executed.
-            </summary>
-        </member>
-        <member name="P:Cake.Common.Tools.GitReleaseManager.Create.GitReleaseManagerCreateSettings.LogFilePath">
-            <summary>
-            Gets or sets the path to the GitReleaseManager log file.
-            </summary>
-        </member>
         <member name="T:Cake.Common.Tools.GitReleaseManager.Create.GitReleaseManagerCreator">
             <summary>
             The GitReleaseManager Release Creator used to create releases.
@@ -26437,7 +26861,7 @@
         </member>
         <member name="M:Cake.Common.Tools.GitReleaseManager.Create.GitReleaseManagerCreator.Create(System.String,System.String,System.String,System.String,Cake.Common.Tools.GitReleaseManager.Create.GitReleaseManagerCreateSettings)">
             <summary>
-            Creates a Release using the specified and settings.
+            Creates a Release using the specified settings.
             </summary>
             <param name="userName">The user name.</param>
             <param name="password">The password.</param>
@@ -26447,12 +26871,41 @@
         </member>
         <member name="M:Cake.Common.Tools.GitReleaseManager.Create.GitReleaseManagerCreator.Create(System.String,System.String,System.String,Cake.Common.Tools.GitReleaseManager.Create.GitReleaseManagerCreateSettings)">
             <summary>
-            Creates a Release using the specified and settings.
+            Creates a Release using the specified settings.
             </summary>
             <param name="token">The token.</param>
             <param name="owner">The owner.</param>
             <param name="repository">The repository.</param>
             <param name="settings">The settings.</param>
+        </member>
+        <member name="T:Cake.Common.Tools.GitReleaseManager.Discard.GitReleaseManagerDiscarder">
+            <summary>
+            The GitReleaseManager Release Discarder used to discard releases.
+            </summary>
+        </member>
+        <member name="M:Cake.Common.Tools.GitReleaseManager.Discard.GitReleaseManagerDiscarder.#ctor(Cake.Core.IO.IFileSystem,Cake.Core.ICakeEnvironment,Cake.Core.IO.IProcessRunner,Cake.Core.Tooling.IToolLocator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.Common.Tools.GitReleaseManager.Discard.GitReleaseManagerDiscarder"/> class.
+            </summary>
+            <param name="fileSystem">The file system.</param>
+            <param name="environment">The environment.</param>
+            <param name="processRunner">The process runner.</param>
+            <param name="tools">The tool locator.</param>
+        </member>
+        <member name="M:Cake.Common.Tools.GitReleaseManager.Discard.GitReleaseManagerDiscarder.Discard(System.String,System.String,System.String,System.String,Cake.Common.Tools.GitReleaseManager.Discard.GitReleaseManagerDiscardSettings)">
+            <summary>
+            Discards a Release using the specified settings.
+            </summary>
+            <param name="token">The token.</param>
+            <param name="owner">The owner.</param>
+            <param name="repository">The repository.</param>
+            <param name="milestone">The milestone.</param>
+            <param name="settings">The settings.</param>
+        </member>
+        <member name="T:Cake.Common.Tools.GitReleaseManager.Discard.GitReleaseManagerDiscardSettings">
+            <summary>
+            Contains settings used by <see cref="T:Cake.Common.Tools.GitReleaseManager.Discard.GitReleaseManagerDiscarder"/>.
+            </summary>
         </member>
         <member name="T:Cake.Common.Tools.GitReleaseManager.Export.GitReleaseManagerExporter">
             <summary>
@@ -26497,16 +26950,6 @@
         <member name="P:Cake.Common.Tools.GitReleaseManager.Export.GitReleaseManagerExportSettings.TagName">
             <summary>
             Gets or sets the tag name to be used when exporting the release notes.
-            </summary>
-        </member>
-        <member name="P:Cake.Common.Tools.GitReleaseManager.Export.GitReleaseManagerExportSettings.TargetDirectory">
-            <summary>
-            Gets or sets the path on which GitReleaseManager should be executed.
-            </summary>
-        </member>
-        <member name="P:Cake.Common.Tools.GitReleaseManager.Export.GitReleaseManagerExportSettings.LogFilePath">
-            <summary>
-            Gets or sets the path to the GitReleaseManager log file.
             </summary>
         </member>
         <member name="T:Cake.Common.Tools.GitReleaseManager.GitReleaseManagerAliases">
@@ -26975,6 +27418,112 @@
             </code>
             </example>
         </member>
+        <member name="M:Cake.Common.Tools.GitReleaseManager.GitReleaseManagerAliases.GitReleaseManagerOpen(Cake.Core.ICakeContext,System.String,System.String,System.String,System.String)">
+            <summary>
+            Opens the milestone associated with a release.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="token">The token.</param>
+            <param name="owner">The owner.</param>
+            <param name="repository">The repository.</param>
+            <param name="milestone">The milestone.</param>
+            <example>
+            <code>
+            GitReleaseManagerOpen("token", "owner", "repo", "0.1.0");
+            </code>
+            </example>
+        </member>
+        <member name="M:Cake.Common.Tools.GitReleaseManager.GitReleaseManagerAliases.GitReleaseManagerOpen(Cake.Core.ICakeContext,System.String,System.String,System.String,System.String,Cake.Common.Tools.GitReleaseManager.Open.GitReleaseManagerOpenMilestoneSettings)">
+            <summary>
+            Opens the milestone associated with a release using the specified settings.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="token">The token.</param>
+            <param name="owner">The owner.</param>
+            <param name="repository">The repository.</param>
+            <param name="milestone">The milestone.</param>
+            <param name="settings">The settings.</param>
+            <example>
+            <code>
+            GitReleaseManagerOpen("token", "owner", "repo", "0.1.0", new GitReleaseManagerOpenMilestoneSettings {
+                TargetDirectory   = "c:/repo",
+                LogFilePath       = "c:/temp/grm.log"
+            });
+            </code>
+            </example>
+        </member>
+        <member name="M:Cake.Common.Tools.GitReleaseManager.GitReleaseManagerAliases.GitReleaseManagerDiscard(Cake.Core.ICakeContext,System.String,System.String,System.String,System.String)">
+            <summary>
+            Discards a Release.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="token">The token.</param>
+            <param name="owner">The owner.</param>
+            <param name="repository">The repository.</param>
+            <param name="milestone">The milestone.</param>
+            <example>
+            <code>
+            GitReleaseManagerDiscard("token", "owner", "repo", "0.1.0");
+            </code>
+            </example>
+        </member>
+        <member name="M:Cake.Common.Tools.GitReleaseManager.GitReleaseManagerAliases.GitReleaseManagerDiscard(Cake.Core.ICakeContext,System.String,System.String,System.String,System.String,Cake.Common.Tools.GitReleaseManager.Discard.GitReleaseManagerDiscardSettings)">
+            <summary>
+            Discards a Release using the specified settings.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="token">The token.</param>
+            <param name="owner">The owner.</param>
+            <param name="repository">The repository.</param>
+            <param name="milestone">The milestone.</param>
+            <param name="settings">The settings.</param>
+            <example>
+            <code>
+            GitReleaseManagerDiscard("token", "owner", "repo", "0.1.0", new GitReleaseManagerDiscardSettings {
+                TargetDirectory   = "c:/repo",
+                LogFilePath       = "c:/temp/grm.log"
+            });
+            </code>
+            </example>
+            <example>
+            <code>
+            GitReleaseManagerDiscard("token", "owner", "repo", "0.1.0", new GitReleaseManagerDiscardSettings {
+                TargetDirectory   = "c:/repo",
+                LogFilePath       = "c:/temp/grm.log"
+            });
+            </code>
+            </example>
+        </member>
+        <member name="T:Cake.Common.Tools.GitReleaseManager.GitReleaseManagerSettings">
+            <summary>
+            Contains settings used by <see cref="T:Cake.Common.Tools.GitReleaseManager.GitReleaseManagerSettings"/>
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.GitReleaseManager.GitReleaseManagerSettings.TargetDirectory">
+            <summary>
+            Gets or sets the path on which GitReleaseManager should be executed.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.GitReleaseManager.GitReleaseManagerSettings.LogFilePath">
+            <summary>
+            Gets or sets the path to the GitReleaseManager log file.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.GitReleaseManager.GitReleaseManagerSettings.Debug">
+            <summary>
+            Gets or sets a value indicating whether or not to use debug level logging.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.GitReleaseManager.GitReleaseManagerSettings.Verbose">
+            <summary>
+            Gets or sets a value indicating whether or not to use verbose level logging.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.GitReleaseManager.GitReleaseManagerSettings.NoLogo">
+            <summary>
+            Gets or sets a value indicating whether or not to show the GitReleaseManager logo during execution.
+            </summary>
+        </member>
         <member name="T:Cake.Common.Tools.GitReleaseManager.GitReleaseManagerTool`1">
             <summary>
             Base class for all GitReleaseManager related tools.
@@ -27001,6 +27550,14 @@
             Gets the possible names of the tool executable.
             </summary>
             <returns>The tool executable name.</returns>
+        </member>
+        <member name="M:Cake.Common.Tools.GitReleaseManager.GitReleaseManagerTool`1.AddBaseArguments(Cake.Common.Tools.GitReleaseManager.GitReleaseManagerSettings,Cake.Core.IO.ProcessArgumentBuilder)">
+            <summary>
+            Adds common arguments to the process builder.
+            </summary>
+            <param name="settings">The settings.</param>
+            <param name="builder">The process argument builder.</param>
+            <returns>The process argument builder.</returns>
         </member>
         <member name="T:Cake.Common.Tools.GitReleaseManager.Label.GitReleaseManagerLabeller">
             <summary>
@@ -27040,14 +27597,33 @@
             Contains settings used by <see cref="T:Cake.Common.Tools.GitReleaseManager.Label.GitReleaseManagerLabeller"/>.
             </summary>
         </member>
-        <member name="P:Cake.Common.Tools.GitReleaseManager.Label.GitReleaseManagerLabelSettings.TargetDirectory">
+        <member name="T:Cake.Common.Tools.GitReleaseManager.Open.GitReleaseManagerMilestoneOpener">
             <summary>
-            Gets or sets the path on which GitReleaseManager should be executed.
+            The GitReleaseManager Milestone Opener used to open milestones.
             </summary>
         </member>
-        <member name="P:Cake.Common.Tools.GitReleaseManager.Label.GitReleaseManagerLabelSettings.LogFilePath">
+        <member name="M:Cake.Common.Tools.GitReleaseManager.Open.GitReleaseManagerMilestoneOpener.#ctor(Cake.Core.IO.IFileSystem,Cake.Core.ICakeEnvironment,Cake.Core.IO.IProcessRunner,Cake.Core.Tooling.IToolLocator)">
             <summary>
-            Gets or sets the path to the GitReleaseManager log file.
+            Initializes a new instance of the <see cref="T:Cake.Common.Tools.GitReleaseManager.Open.GitReleaseManagerMilestoneOpener"/> class.
+            </summary>
+            <param name="fileSystem">The file system.</param>
+            <param name="environment">The environment.</param>
+            <param name="processRunner">The process runner.</param>
+            <param name="tools">The tool locator.</param>
+        </member>
+        <member name="M:Cake.Common.Tools.GitReleaseManager.Open.GitReleaseManagerMilestoneOpener.Open(System.String,System.String,System.String,System.String,Cake.Common.Tools.GitReleaseManager.Open.GitReleaseManagerOpenMilestoneSettings)">
+            <summary>
+            Creates a Release using the specified settings.
+            </summary>
+            <param name="token">The token.</param>
+            <param name="owner">The owner.</param>
+            <param name="repository">The repository.</param>
+            <param name="milestone">The milestone.</param>
+            <param name="settings">The settings.</param>
+        </member>
+        <member name="T:Cake.Common.Tools.GitReleaseManager.Open.GitReleaseManagerOpenMilestoneSettings">
+            <summary>
+            Contains settings used by <see cref="T:Cake.Common.Tools.GitReleaseManager.Open.GitReleaseManagerMilestoneOpener"/>.
             </summary>
         </member>
         <member name="T:Cake.Common.Tools.GitReleaseManager.Publish.GitReleaseManagerPublisher">
@@ -27088,16 +27664,6 @@
         <member name="T:Cake.Common.Tools.GitReleaseManager.Publish.GitReleaseManagerPublishSettings">
             <summary>
             Contains settings used by <see cref="T:Cake.Common.Tools.GitReleaseManager.Publish.GitReleaseManagerPublisher"/>.
-            </summary>
-        </member>
-        <member name="P:Cake.Common.Tools.GitReleaseManager.Publish.GitReleaseManagerPublishSettings.TargetDirectory">
-            <summary>
-            Gets or sets the path on which GitReleaseManager should be executed.
-            </summary>
-        </member>
-        <member name="P:Cake.Common.Tools.GitReleaseManager.Publish.GitReleaseManagerPublishSettings.LogFilePath">
-            <summary>
-            Gets or sets the path to the GitReleaseManager log file.
             </summary>
         </member>
         <member name="T:Cake.Common.Tools.GitReleaseNotes.GitReleaseNotesAliases">
@@ -28021,10 +28587,26 @@
             Gets or sets the script compiler's quiet mode (<c>/Q</c> and <c>/Qp</c> command line options).
             </summary>
         </member>
+        <member name="P:Cake.Common.Tools.InnoSetup.InnoSetupSettings.Version">
+            <summary>
+            Gets or sets the version of Inno Setup to be used with this command. By default the highest installed version of Inno Setup is used.
+            </summary>
+        </member>
         <member name="M:Cake.Common.Tools.InnoSetup.InnoSetupSettings.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:Cake.Common.Tools.InnoSetup.InnoSetupSettings"/> class with the default settings.
             </summary>
+        </member>
+        <member name="T:Cake.Common.Tools.InnoSetup.InnoSetupVersion">
+            <summary>
+            Represents the supported major versions of Inno Setup.
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Tools.InnoSetup.InnoSetupVersion.InnoSetup5">
+            <summary>Version 5.x</summary>
+        </member>
+        <member name="F:Cake.Common.Tools.InnoSetup.InnoSetupVersion.InnoSetup6">
+            <summary>Version 6.x</summary>
         </member>
         <member name="T:Cake.Common.Tools.InspectCode.InspectCodeAliases">
             <summary>
@@ -28123,6 +28705,13 @@
             </summary>
             <returns>The name of the tool.</returns>
         </member>
+        <member name="M:Cake.Common.Tools.InspectCode.InspectCodeRunner.GetToolExecutableNames(Cake.Common.Tools.InspectCode.InspectCodeSettings)">
+            <summary>
+            Gets the possible names of the tool executable.
+            </summary>
+            <param name="settings">The settings.</param>
+            <returns>The tool executable name.</returns>
+        </member>
         <member name="M:Cake.Common.Tools.InspectCode.InspectCodeRunner.GetToolExecutableNames">
             <summary>
             Gets the possible names of the tool executable.
@@ -28210,6 +28799,91 @@
         <member name="P:Cake.Common.Tools.InspectCode.InspectCodeSettings.ThrowExceptionOnFindingViolations">
             <summary>
             Gets or sets a value indicating whether to throw an exception on finding violations
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.InspectCode.InspectCodeSettings.UseX86Tool">
+            <summary>
+            Gets or sets a value indicating whether to use x86 tool.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.InspectCode.InspectCodeSettings.Verbosity">
+            <summary>
+            Gets or sets the verbosity level of the log messages.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.InspectCode.InspectCodeSettings.Severity">
+            <summary>
+            Gets or sets the minimal severity of issues to report.
+            </summary>
+        </member>
+        <member name="T:Cake.Common.Tools.InspectCode.InspectCodeSeverity">
+            <summary>
+            Represents InspectCode's minimal severity report.
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Tools.InspectCode.InspectCodeSeverity.Info">
+            <summary>
+            Severity: INFO.
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Tools.InspectCode.InspectCodeSeverity.Hint">
+            <summary>
+            Severity: HINT.
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Tools.InspectCode.InspectCodeSeverity.Suggestion">
+            <summary>
+            Severity: SUGGESTION.
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Tools.InspectCode.InspectCodeSeverity.Warning">
+            <summary>
+            Severity: WARNING.
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Tools.InspectCode.InspectCodeSeverity.Error">
+            <summary>
+            Severity: ERROR.
+            </summary>
+        </member>
+        <member name="T:Cake.Common.Tools.InspectCode.InspectCodeVerbosity">
+            <summary>
+            Represents InspectCode's logging verbosity.
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Tools.InspectCode.InspectCodeVerbosity.Off">
+            <summary>
+            Verbosity: OFF.
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Tools.InspectCode.InspectCodeVerbosity.Fatal">
+            <summary>
+            Verbosity: FATAL.
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Tools.InspectCode.InspectCodeVerbosity.Error">
+            <summary>
+            Verbosity: ERROR.
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Tools.InspectCode.InspectCodeVerbosity.Warn">
+            <summary>
+            Verbosity: WARN.
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Tools.InspectCode.InspectCodeVerbosity.Info">
+            <summary>
+            Verbosity: INFO.
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Tools.InspectCode.InspectCodeVerbosity.Verbose">
+            <summary>
+            Verbosity: VERBOSE.
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Tools.InspectCode.InspectCodeVerbosity.Trace">
+            <summary>
+            Verbosity: TRACE.
             </summary>
         </member>
         <member name="T:Cake.Common.Tools.InspectCode.SettingsLayer">

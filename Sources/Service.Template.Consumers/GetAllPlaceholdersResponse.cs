@@ -12,5 +12,10 @@ namespace Service.Template.Consumers
         /// Получает или задает список Placeholder.
         /// </summary>
         public List<Placeholder> Placeholders { get; set; }
+
+        /// <summary>
+        /// Получает или задает результат обработки команды.
+        /// </summary>
+        public string Result { get; set; }
     }
 }

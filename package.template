@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <version>1.0.0</version>
+    <id>Service.Template</id>
+    <description>Generic service tempate with WebApi and MassTransit.</description>
+    <authors>Aleksey Balandin [https://github.com/bltzkrgmchn/]</authors>
+    <projectUrl>https://github.com/bltzkrgmchn/service.template</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <tags>WabApi Template MassTransit C#</tags>
+    <packageTypes>
+      <packageType name="Template" />
+    </packageTypes>
+  </metadata>
+  <files>
+    <file src=".template.config/template.json" target="content/.template.config/" />
+    <file src="*.*" exclude="README.Service.md;RELEASE_NOTES.Service.md;README.md;RELEASE_NOTES.md;package.service.template;package.template" target="content/" />
+    <file src="README.Service.md" target="content/README.md" />
+    <file src="RELEASE_NOTES.Service.md" target="content/RELEASE_NOTES.md" />
+    <file src="package.service.template" target="content/package.template" />
+    <file src="Sources/**/*.*" exclude="**/bin/**/*.*;**/obj/**/*.*" target="content/" />
+    <file src="Tests/**/*.*" exclude="**/bin/**/*.*;**/obj/**/*.*" target="content/" />
+  </files>
+</package>

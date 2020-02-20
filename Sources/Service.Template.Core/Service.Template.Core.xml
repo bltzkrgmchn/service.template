@@ -59,11 +59,12 @@
         <member name="T:Service.Template.Core.PlaceholderService">
             <inheritdoc/>
         </member>
-        <member name="M:Service.Template.Core.PlaceholderService.#ctor(Service.Template.Core.IPlaceholderRepository)">
+        <member name="M:Service.Template.Core.PlaceholderService.#ctor(Service.Template.Core.IPlaceholderRepository,Microsoft.Extensions.Logging.ILogger{Service.Template.Core.PlaceholderService})">
             <summary>
             Инициализирует новый экземпляр класса <see cref="T:Service.Template.Core.PlaceholderService"/>.
             </summary>
             <param name="placeholderRepository">Хранилище Placeholder.</param>
+            <param name="logger">Абстракция над сервисом журналирования.</param>
         </member>
         <member name="M:Service.Template.Core.PlaceholderService.Get(System.String)">
             <inheritdoc/>

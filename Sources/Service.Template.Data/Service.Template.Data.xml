@@ -36,11 +36,12 @@
         <member name="T:Service.Template.Data.PlaceholderRepository">
             <inheritdoc />
         </member>
-        <member name="M:Service.Template.Data.PlaceholderRepository.#ctor(System.String)">
+        <member name="M:Service.Template.Data.PlaceholderRepository.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Service.Template.Data.PlaceholderRepository})">
             <summary>
             Инициализирует новый экземпляр класса <see cref="T:Service.Template.Data.PlaceholderRepository"/>.
             </summary>
             <param name="connectionString">Строка подключения.</param>
+            <param name="logger">Абстракция над сервисом журналирования.</param>
         </member>
         <member name="M:Service.Template.Data.PlaceholderRepository.Find">
             <inheritdoc />

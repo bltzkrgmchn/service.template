@@ -14,11 +14,12 @@
             Обработчик сообщения получения списка Placeholder.
             </summary>
         </member>
-        <member name="M:Service.Template.Consumers.GetAllPlaceholdersConsumer.#ctor(Service.Template.Core.IPlaceholderService)">
+        <member name="M:Service.Template.Consumers.GetAllPlaceholdersConsumer.#ctor(Service.Template.Core.IPlaceholderService,Microsoft.Extensions.Logging.ILogger{Service.Template.Consumers.GetAllPlaceholdersConsumer})">
             <summary>
             Инициализирует новый экземпляр класса <see cref="T:Service.Template.Consumers.GetAllPlaceholdersConsumer"/>.
             </summary>
             <param name="service">Сервисный объект для управления Placeholder.</param>
+            <param name="logger">Абстракция над сервисом журналирования.</param>
         </member>
         <member name="M:Service.Template.Consumers.GetAllPlaceholdersConsumer.Consume(MassTransit.ConsumeContext{Service.Template.Consumers.GetAllPlaceholdersCommand})">
             <summary>
@@ -37,6 +38,11 @@
             Получает или задает список Placeholder.
             </summary>
         </member>
+        <member name="P:Service.Template.Consumers.GetAllPlaceholdersResponse.Result">
+            <summary>
+            Получает или задает результат обработки команды.
+            </summary>
+        </member>
         <member name="T:Service.Template.Consumers.GetPlaceholderCommand">
             <summary>
             Команда получения Placeholder.
@@ -52,11 +58,12 @@
             Обработчик сообщения получения Placeholder.
             </summary>
         </member>
-        <member name="M:Service.Template.Consumers.GetPlaceholderConsumer.#ctor(Service.Template.Core.IPlaceholderService)">
+        <member name="M:Service.Template.Consumers.GetPlaceholderConsumer.#ctor(Service.Template.Core.IPlaceholderService,Microsoft.Extensions.Logging.ILogger{Service.Template.Consumers.GetAllPlaceholdersConsumer})">
             <summary>
             Инициализирует новый экземпляр класса <see cref="T:Service.Template.Consumers.GetPlaceholderConsumer"/>.
             </summary>
             <param name="service">Сервисный объект для управления Placeholder.</param>
+            /// <param name="logger">Абстракция над сервисом журналирования.</param>
         </member>
         <member name="M:Service.Template.Consumers.GetPlaceholderConsumer.Consume(MassTransit.ConsumeContext{Service.Template.Consumers.GetPlaceholderCommand})">
             <summary>
@@ -73,6 +80,44 @@
         <member name="P:Service.Template.Consumers.GetPlaceholderResponse.Placeholder">
             <summary>
             Получает или задает Placeholder.
+            </summary>
+        </member>
+        <member name="P:Service.Template.Consumers.GetPlaceholderResponse.Result">
+            <summary>
+            Получает или задает результат обработки команды.
+            </summary>
+        </member>
+        <member name="T:Service.Template.Consumers.Healthchecks.HealthcheckCommand">
+            <summary>
+            Команда получения состояния службы.
+            </summary>
+        </member>
+        <member name="T:Service.Template.Consumers.Healthchecks.HealthcheckConsumer">
+            <summary>
+            Обработчик сообщения получения состояния службы.
+            </summary>
+        </member>
+        <member name="M:Service.Template.Consumers.Healthchecks.HealthcheckConsumer.#ctor(Microsoft.Extensions.Logging.ILogger{Service.Template.Consumers.Healthchecks.HealthcheckConsumer})">
+            <summary>
+            Инициализирует новый экземпляр класса <see cref="T:Service.Template.Consumers.Healthchecks.HealthcheckConsumer"/>.
+            </summary>
+            <param name="logger">Абстракция над сервисом журналирования.</param>
+        </member>
+        <member name="M:Service.Template.Consumers.Healthchecks.HealthcheckConsumer.Consume(MassTransit.ConsumeContext{Service.Template.Consumers.Healthchecks.HealthcheckCommand})">
+            <summary>
+            Обработать сообщение.
+            </summary>
+            <param name="context">Контекст обработки сообщения.</param>
+            <returns>Асинхронная операция <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="T:Service.Template.Consumers.Healthchecks.HealthcheckResponse">
+            <summary>
+            Ответ на команду получения состояния службы.
+            </summary>
+        </member>
+        <member name="P:Service.Template.Consumers.Healthchecks.HealthcheckResponse.Result">
+            <summary>
+            Получает или задает результат обработки команды.
             </summary>
         </member>
     </members>

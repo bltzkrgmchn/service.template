@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Service.Template</id>
+        <description>{{serviceDescription}}</description>
+        <authors>{{serviceAuthors}}</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <tags>WabApi Template MassTransit C#</tags>
+    </metadata>
+    <files>
+        <file src="Sources\Service.Template.Instance\bin\Release\**\*.*" target="lib" />
+    </files>
+</package>
