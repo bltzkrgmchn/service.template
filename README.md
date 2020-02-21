@@ -1,5 +1,7 @@
 # Service.Template
 
+[![Build status](https://ci.appveyor.com/api/projects/status/178r91ywh63o2pby?svg=true)](https://ci.appveyor.com/project/bltzkrgmchn/service-template)
+
 Шаблон для создания сервиса общего назначения.
 
 ## Требования
