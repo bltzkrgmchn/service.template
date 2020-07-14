@@ -1,16 +1,14 @@
 # Service.Template
 
-[![Build status](https://ci.appveyor.com/api/projects/status/178r91ywh63o2pby?svg=true)](https://ci.appveyor.com/project/bltzkrgmchn/service-template)
-
 Шаблон для создания сервиса общего назначения.
 
 ## Требования
 
-Шаблон использует стандартный механизм шаблонизации ```dotnet new``` и требует установленный ```.NET Core 2.2 SDK```, который можно взять [на оффициальном сайте Microsoft](https://dotnet.microsoft.com/download/dotnet-core/2.2).
-
-Для построения и запуска сервиса необходимо наличие установленной версии исполняемой среды ```.Net Core 2.2.8``` и исполняемая среда ```win-x64```.
+Шаблон использует стандартный механизм шаблонизации ```dotnet new``` и требует установленный ```.NET Core 2.2 SDK```, который можно взять [здесь](https://dotnet.microsoft.com/download/dotnet-core/2.2).
 
 ## Установка
+
+### Установка из исходного кода
 
 Для установки шаблона необходимо склонировать содержимое репозитория и использовать команду
 
@@ -26,6 +24,8 @@
 dotnet new --install ".\artifacts\packages\Service.Template.{версия.шаблона}.nupkg"
 ```
 
+## Просмотр списка шаблонов
+
 Шаблон будет установлен под именем ```webapi-masstransit```.
 
 Для просмотра всех установленных шаблонов необходимо использовать команду
@@ -39,7 +39,7 @@ dotnet new --list
 Для создания нового экземпляра сервиса с использованием шаблона необходимо использовать команду
 
 ```powershell
-dotnet new webapi-masstransit --name "{название.сервиса}" --output "путь\к\экземпляру\сервиса" --Description "{описание сервиса}" --Authors "{авторы}"
+dotnet new webapi-masstransit --name "{название.сервиса}" --output "путь\к\экземпляру\сервиса" --Description "{описание.сервиса}" --Authors "{авторы}"
 ```
 
 ## Используемые библиотеки
@@ -71,7 +71,7 @@ dotnet new webapi-masstransit --name "{название.сервиса}" --outpu
 Для запуска сервиса необходимо запустить исполняемый файл сервиса ```Service.Template.exe```, находящийся в папке ```./artifacts/publish```.
 
 ```powershell
-./artifacts/publish/Service.Template.exe
+./artifacts/publish/Service.Template.Instance.exe
 ```
 
 Для запуска сервиса как windows-службы необходимо установить исполняемый файл сервиса ```Service.Template.exe``` с флагом ```--service``` или ```-s``` как windows-службу.
