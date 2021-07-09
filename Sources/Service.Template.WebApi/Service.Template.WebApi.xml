@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Service.Template.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:Service.Template.WebApi.AuthorizationFilter">
+            <summary>
+            Фильтр проверки токена авторизации.
+            </summary>
+        </member>
+        <member name="M:Service.Template.WebApi.AuthorizationFilter.#ctor(MassTransit.IRequestClient{Service.Template.WebApi.AuthorizeCommand},Microsoft.Extensions.Logging.ILogger{Service.Template.WebApi.AuthorizationFilter})">
+            <summary>
+            Инициализирует новый экземпляр класса <see cref="T:Service.Template.WebApi.AuthorizationFilter"/>.
+            </summary>
+            <param name="authorizationClient">Клиент проверки токена авторизации.</param>
+            <param name="logger">Абстракция над сервисом журналирования.</param>
+        </member>
+        <member name="M:Service.Template.WebApi.AuthorizationFilter.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Service.Template.WebApi.AuthorizationFilter.OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Service.Template.WebApi.AuthorizeCommand">
+            <summary>
+            Команда проверки авторизации.
+            </summary>
+        </member>
+        <member name="P:Service.Template.WebApi.AuthorizeCommand.Token">
+            <summary>
+            Получает или задает токен авторизации.
+            </summary>
+        </member>
+        <member name="T:Service.Template.WebApi.AuthorizeResponse">
+            <summary>
+            Ответ на команду проверки токена авторизации.
+            </summary>
+        </member>
+        <member name="P:Service.Template.WebApi.AuthorizeResponse.Result">
+            <summary>
+            Получает или задает результат проверки токена авторизации.
+            </summary>
+        </member>
+        <member name="T:Service.Template.WebApi.HealthController">
+            <summary>
+            Контроллер проверки состояния службы.
+            </summary>
+        </member>
+        <member name="M:Service.Template.WebApi.HealthController.#ctor(MassTransit.IRequestClient{Service.Template.Consumers.Healthchecks.HealthcheckCommand})">
+            <summary>
+            Инициализирует новый экземпляр класса <see cref="T:Service.Template.WebApi.HealthController"/>.
+            </summary>
+            <param name="healthClient">Клиент получения статуса службы.</param>
+        </member>
+        <member name="M:Service.Template.WebApi.HealthController.Get">
+            <summary>
+            Получить статус службы.
+            </summary>
+            <returns>Статус службы.</returns>
+        </member>
+        <member name="T:Service.Template.WebApi.PlaceholderController">
+            <summary>
+            Контроллер Placeholder.
+            </summary>
+        </member>
+        <member name="M:Service.Template.WebApi.PlaceholderController.#ctor(MassTransit.IRequestClient{Service.Template.Consumers.GetPlaceholderCommand},MassTransit.IRequestClient{Service.Template.Consumers.GetAllPlaceholdersCommand})">
+            <summary>
+            Инициализирует новый экземпляр класса <see cref="T:Service.Template.WebApi.PlaceholderController"/>.
+            </summary>
+            <param name="getPlaceholderClient">Клиент получения Placeholder.</param>
+            <param name="getAllPlaceholdersClient">Клиент получения списка Placeholder.</param>
+        </member>
+        <member name="M:Service.Template.WebApi.PlaceholderController.Options">
+            <summary>
+            Метод для получения доступным методов.
+            </summary>
+            <returns>Список доступных методов.</returns>
+        </member>
+        <member name="M:Service.Template.WebApi.PlaceholderController.GetAll">
+            <summary>
+            Получить список Placeholder.
+            </summary>
+            <returns>Список Placeholder.</returns>
+        </member>
+        <member name="M:Service.Template.WebApi.PlaceholderController.Get(System.String)">
+            <summary>
+            Получить Placeholder.
+            </summary>
+            <param name="id">Идентификатор Placeholder.</param>
+            <returns>Placeholder.</returns>
+        </member>
+    </members>
+</doc>

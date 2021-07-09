@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Hosting.WindowsServices;
+using Microsoft.Extensions.Hosting;
 using Serilog;
 using System;
 using System.Diagnostics;
@@ -35,26 +36,33 @@ namespace Service.Template.Instance
 
                     Log.Information("Начинается построение хоста приложения.");
 
-                    IWebHost host = WebHost.CreateDefaultBuilder(args)
-                        .UseContentRoot(contentRootPath)
-                        .UseStartup<Startup>()
+                    IHost host = Host.CreateDefaultBuilder(args)
                         .UseSerilog()
+                        .ConfigureWebHostDefaults(webBuilder =>
+                        {
+                            webBuilder.UseStartup<Startup>();
+                        })
+                        .UseContentRoot(contentRootPath)
                         .Build();
 
                     Log.Information("Построение хоста приложения успешно завершено.");
 
-                    host.RunAsService();
+                    host.Run();
                 }
                 else
                 {
                     Log.Information("Приложение будет запущено как консольное приложение. Для того, что бы запустить приложение как windows-службу, передайте флаги '--service' или '-s'.");
+                    string contentRootPath = Directory.GetCurrentDirectory();
 
                     Log.Information("Начинается построение хоста приложения.");
 
-                    IWebHost host = WebHost.CreateDefaultBuilder(args)
-                        .UseContentRoot(Directory.GetCurrentDirectory())
-                        .UseStartup<Startup>()
+                    IHost host = Host.CreateDefaultBuilder(args)
                         .UseSerilog()
+                        .ConfigureWebHostDefaults(webBuilder =>
+                        {
+                            webBuilder.UseStartup<Startup>();
+                        })
+                        .UseContentRoot(contentRootPath)
                         .Build();
 
                     Log.Information("Построение хоста приложения успешно завершено.");

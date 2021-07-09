@@ -10,8 +10,9 @@ namespace Service.Template.WebApi
     /// <summary>
     /// Контроллер проверки состояния службы.
     /// </summary>
+    [ApiController]
     [Route("/health")]
-    public class HealthController : Controller
+    public class HealthController : ControllerBase
     {
         private readonly IRequestClient<HealthcheckCommand> healthClient;
 

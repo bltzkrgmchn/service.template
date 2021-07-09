@@ -10,8 +10,9 @@ namespace Service.Template.WebApi
     /// <summary>
     /// Контроллер Placeholder.
     /// </summary>
+    [ApiController]
     [Route("/placeholders")]
-    public class PlaceholderController : Controller
+    public class PlaceholderController : ControllerBase
     {
         private readonly IRequestClient<GetPlaceholderCommand> getPlaceholderClient;
         private readonly IRequestClient<GetAllPlaceholdersCommand> getAllPlaceholdersClient;

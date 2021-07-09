@@ -1,5 +1,6 @@
 ﻿using MassTransit;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,7 +25,7 @@ namespace Service.Template.Instance
         /// <summary>
         /// Инициализирует новый экземпляр класса <see cref="Startup"/>.
         /// </summary>
-        public Startup(IHostingEnvironment environment)
+        public Startup(IHostEnvironment environment)
         {
             IConfigurationBuilder builder = new ConfigurationBuilder()
                 .SetBasePath(environment.ContentRootPath)
@@ -42,7 +43,8 @@ namespace Service.Template.Instance
         {
             application.UseCors("AllowAll");
 
-            application.UseMvc();
+            application.UseRouting();
+            application.UseEndpoints(endpoints => endpoints.MapControllers());
         }
 
         /// <summary>
@@ -92,52 +94,25 @@ namespace Service.Template.Instance
                 x.AddConsumer<HealthcheckConsumer>();
 
                 x.AddRequestClient<AuthorizeCommand>();
+
+                x.UsingRabbitMq((context, configuration) =>
+                {
+                    BusConfiguration busConfiguration = this.configuration.GetSection("Bus").Get<BusConfiguration>();
+
+                    configuration.Host(busConfiguration.ConnectionString, h =>
+                    {
+                        h.Username(busConfiguration.Username);
+                        h.Password(busConfiguration.Password);
+
+                        h.PublisherConfirmation = busConfiguration.PublisherConfirmation;
+                    });
+
+                    configuration.ConfigureEndpoints(context);
+                });
             });
 
-            // Регистрация шины.
-            // Подробнее про регистрацию шины можно почитать здесь: https://masstransit-project.com/usage/
-            services.AddSingleton(serviceProvider => Bus.Factory.CreateUsingRabbitMq(configure =>
-            {
-                BusConfiguration busConfiguration = this.configuration.GetSection("Bus").Get<BusConfiguration>();
-
-                // Конфигурация подключения к шине, включающая в себя указание адреса и учетных данных.
-                configure.Host(new Uri(busConfiguration.ConnectionString), host =>
-                {
-                    host.Username(busConfiguration.Username);
-                    host.Password(busConfiguration.Password);
-
-                    // Подтверждение получения гарантирует доставку сообщений за счет ухудшения производительности.
-                    host.PublisherConfirmation = busConfiguration.PublisherConfirmation;
-                });
-
-                // Добавление Serilog для журналирования внутренностей MassTransit.
-                configure.UseSerilog();
-
-                // Регистрация очередей и их связи с потребителями сообщений.
-                // В качестве метки сообщения используется полное имя класса сообщения, которое потребляет потребитель.
-                configure.ReceiveEndpoint(typeof(GetAllPlaceholdersCommand).FullName, endpoint =>
-                {
-                    endpoint.Consumer<GetAllPlaceholdersConsumer>(serviceProvider);
-                    EndpointConvention.Map<GetAllPlaceholdersCommand>(endpoint.InputAddress);
-                });
-
-                configure.ReceiveEndpoint(typeof(GetPlaceholderCommand).FullName, endpoint =>
-                {
-                    endpoint.Consumer<GetPlaceholderConsumer>(serviceProvider);
-                    EndpointConvention.Map<GetPlaceholderCommand>(endpoint.InputAddress);
-                });
-
-                configure.ReceiveEndpoint(typeof(HealthcheckCommand).FullName, endpoint =>
-                {
-                    endpoint.Consumer<HealthcheckConsumer>(serviceProvider);
-                    EndpointConvention.Map<HealthcheckCommand>(endpoint.InputAddress);
-                });
-            }));
-
             // Регистрация сервисов MassTransit.
-            services.AddSingleton<IPublishEndpoint>(serviceProvider => serviceProvider.GetRequiredService<IBusControl>());
-            services.AddSingleton<ISendEndpointProvider>(serviceProvider => serviceProvider.GetRequiredService<IBusControl>());
-            services.AddSingleton<IBus>(serviceProvider => serviceProvider.GetRequiredService<IBusControl>());
+            services.AddMassTransitHostedService();
 
             // Регистрация клиентов для запроса данных от потребителей сообщений из api.
             // Каждый клиент зарегистрирован таким образом, что бы в рамках каждого запроса к api существовал свой клиент.
@@ -150,8 +125,6 @@ namespace Service.Template.Instance
             services.AddScoped(serviceProvider => serviceProvider.GetRequiredService<IBus>()
                 .CreateRequestClient<AuthorizeCommand>());
 
-            // Регистрация сервиса шины MassTransit.
-            services.AddSingleton<IHostedService, BusService>();
             Log.Information("Регистрация шины успешно завершена.");
 
             Log.Information("Начинается регистрация фильтра авторизации.");
@@ -161,7 +134,7 @@ namespace Service.Template.Instance
             Log.Information("Регистрация фильтра авторизации успешно завершена.");
 
             Log.Information("Начинается регистрация сервисов MVC.");
-            services.AddMvc();
+            services.AddControllers().PartManager.ApplicationParts.Add(new AssemblyPart(typeof(HealthController).Assembly));
             Log.Information("Регистрация сервисов MVC успешно завершена.");
         }
     }

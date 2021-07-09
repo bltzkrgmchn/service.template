@@ -63,7 +63,7 @@ Task ("Publish")
     .Does (() => {
         var settings = new DotNetCorePublishSettings
         {
-            Framework = "netcoreapp2.2",
+            Framework = "netcoreapp3.1",
             Configuration = "Release",
             OutputDirectory = "./artifacts/publish",
             NoBuild = true,

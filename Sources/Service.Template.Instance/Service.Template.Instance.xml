@@ -29,25 +29,6 @@
             Получает или задает значение, показывающее, флаг подтверждения получения сообщений.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:Service.Template.Instance.BusService" -->
-        <member name="M:Service.Template.Instance.BusService.#ctor(MassTransit.IBusControl)">
-            <summary>
-            Инициализирует новый экземпляр класса <see cref="T:Service.Template.Instance.BusService"/>.
-            </summary>
-            <param name="busControl">Контролер шины.</param>
-        </member>
-        <member name="M:Service.Template.Instance.BusService.StartAsync(System.Threading.CancellationToken)">
-            <summary>
-            Метод, выполняющийся во время запуска сервиса.
-            </summary>
-            <param name="cancellationToken">Токен отмены операции.</param>
-        </member>
-        <member name="M:Service.Template.Instance.BusService.StopAsync(System.Threading.CancellationToken)">
-            <summary>
-            Метод, выполняющийся во время остановки сервиса.
-            </summary>
-            <param name="cancellationToken">Токен отмены операции.</param>
-        </member>
         <member name="T:Service.Template.Instance.Program">
             <summary>
             Точка входа в приложение.
@@ -64,7 +45,7 @@
             Инициализация приложения.
             </summary>
         </member>
-        <member name="M:Service.Template.Instance.Startup.#ctor(Microsoft.Extensions.Hosting.IHostingEnvironment)">
+        <member name="M:Service.Template.Instance.Startup.#ctor(Microsoft.Extensions.Hosting.IHostEnvironment)">
             <summary>
             Инициализирует новый экземпляр класса <see cref="T:Service.Template.Instance.Startup"/>.
             </summary>

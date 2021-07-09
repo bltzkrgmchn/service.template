@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.2</TargetFramework>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
         <CodeAnalysisRuleSet>$(SolutionDir)\stylecop.ruleset</CodeAnalysisRuleSet>
         <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
-        <RuntimeFrameworkVersion>2.2.8</RuntimeFrameworkVersion>
+        <RuntimeFrameworkVersion>3.1.16</RuntimeFrameworkVersion>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     </PropertyGroup>
@@ -18,8 +18,8 @@
         <AdditionalFiles Include="$(SolutionDir)\stylecop.json" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.16" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.16" />
         <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

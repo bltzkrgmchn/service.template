@@ -9,5 +9,5 @@ using System.Reflection;
 [assembly: AssemblyVersion("2.0.0")]
 [assembly: AssemblyFileVersion("2.0.0")]
 [assembly: AssemblyInformationalVersion("2.0.0")]
-[assembly: AssemblyCopyright("Copyright (c) Aleksey Balandin 2019 - 2020")]
+[assembly: AssemblyCopyright("Copyright (c) Aleksey Balandin 2019 - 2021")]
 

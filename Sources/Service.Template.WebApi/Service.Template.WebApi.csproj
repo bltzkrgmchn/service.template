@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.2</TargetFramework>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
         <CodeAnalysisRuleSet>$(SolutionDir)\stylecop.ruleset</CodeAnalysisRuleSet>
         <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
-        <RuntimeFrameworkVersion>2.2.8</RuntimeFrameworkVersion>
+        <RuntimeFrameworkVersion>3.1.16</RuntimeFrameworkVersion>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     </PropertyGroup>
@@ -18,14 +18,15 @@
         <AdditionalFiles Include="$(SolutionDir)\stylecop.json" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="MassTransit" Version="5.5.6" />
-        <PackageReference Include="GreenPipes" Version="2.1.4" />
-        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="4.6.0" />
-        <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+        <PackageReference Include="MassTransit" Version="7.2.1" />
+        <PackageReference Include="GreenPipes" Version="4.0.0" />
+        <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="5.0.1" />
         <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
 </Project>

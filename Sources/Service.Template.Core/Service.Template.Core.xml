@@ -47,13 +47,13 @@
         </member>
         <member name="M:Service.Template.Core.Placeholder.#ctor(System.String)">
             <summary>
-            Инициализирует новый экземпляр класса <see cref="T:Service.Template.Core.Placeholder"/>.
+            Èíèöèàëèçèðóåò íîâûé ýêçåìïëÿð êëàññà <see cref="T:Service.Template.Core.Placeholder"/>.
             </summary>
-            <param name="id">Идентификатор Placeholder.</param>
+            <param name="id">Èäåíòèôèêàòîð Placeholder.</param>
         </member>
         <member name="P:Service.Template.Core.Placeholder.Id">
             <summary>
-            Получает идентификатор Placeholder.
+            Ïîëó÷àåò èäåíòèôèêàòîð Placeholder.
             </summary>
         </member>
         <member name="T:Service.Template.Core.PlaceholderService">
